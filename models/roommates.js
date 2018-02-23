@@ -5,48 +5,52 @@ var Sequelize = require("sequelize");
 var sequelize=require("../config/connection.js");
 
 //Creates a model that matches up with DB
-var roommates = sequelize.define('roommates', {
-	user_id: {
-	 	type: Sequelize.INTEGER,
-	}, 	
-	firstName: {
-		type: Sequelize.STRING,
-    },
-    lastName: {
-      type: Sequelize.STRING	
-    },
-    email: {
-      type: Sequelize.STRING
-    },
-    user_password: {
-      type: Sequelize.STRING
-    },
-    rent: {
-    	type: Sequelize.INTEGER
-    },
-    smoker: {
-    	type: Sequelize.STRING
-    },
-    age: {
-    	type: Sequelize.INTEGER
-    },
-    zipCode: {
-    	type: Sequelize.INTEGER
-    },
-    pets: {
-    	type: Sequelize.STRING
-    },
-    aboutMe: {
-    	type: Sequelize.TEXT
-    },   
-  },
-   {
-  timestamps: false}
-);
+function roomies(){
+    var roommates = sequelize.define('roommates', {
+    	user_id: {
+    	 	type: Sequelize.INTEGER,
+    	}, 	
+    	firstName: {
+    		type: Sequelize.STRING,
+        },
+        lastName: {
+          type: Sequelize.STRING	
+        },
+        email: {
+          type: Sequelize.STRING
+        },
+        user_password: {
+          type: Sequelize.STRING
+        },
+        rent: {
+        	type: Sequelize.INTEGER
+        },
+        smoker: {
+        	type: Sequelize.STRING
+        },
+        age: {
+        	type: Sequelize.INTEGER
+        },
+        zipCode: {
+        	type: Sequelize.INTEGER
+        },
+        pets: {
+        	type: Sequelize.STRING
+        },
+        aboutMe: {
+        	type: Sequelize.TEXT
+        },   
+      },
+       {
+      timestamps: false}
+    );
+
+    return roommates;
+}
 
 
 //Sync with DB
-roommates.sync();
+//roommates.sync();
 
 // create table
-module.exports = roommates;
+module.exports = roomies;

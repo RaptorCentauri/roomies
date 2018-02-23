@@ -1,6 +1,6 @@
 const db = require("../models"), Sequelize = require('sequelize'), Op = Sequelize.Op;
 const users = require("../controllers/login.js");
-const signup = require("../controlllers/signup.js");
+const signup = require("../controllers/signup.js");
 const jwt = require("jsonwebtoken");
 
 module.exports = (app)=>{
@@ -85,9 +85,10 @@ function verify(token){
   app.post("/api/userId", (req, res)=>{
     db.User.findOne({
       where: {
-        userId: 
+        userId: "test"
       }
-    }).then((dbUser)=>{
+    })
+    .then((dbUser)=>{
       if (!dbUser) {
         db.User.create(req.body).then((dbUser)=>{
           res.json(dbUser);
