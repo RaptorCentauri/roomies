@@ -1,0 +1,89 @@
+.mini-profile-box{
+    width: 505px;
+    height: 150px;
+    background-color: #eeeeee;
+    display: flex;
+    box-shadow:10px 10px 8px rgb(163, 162, 162);
+}
+
+.avatar-box{
+    height: 150px;
+    width: 150px;
+    border-right:1px solid rgb(124, 124, 124);
+    display: flex;
+    flex-direction: column;
+}
+
+.avatar-top{
+    height: 130px;
+}
+
+.avatar-bottom{
+    height: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.avatar-bottom > h4{
+    padding: 0;
+    margin: 0;
+}
+
+.avatar-frame{
+    margin: 10px 10px;
+    height: 115px;
+    width: 115px;
+    border-radius: 100%;
+    background-color: dodgerblue;
+    align-self: center;
+    justify-self: baseline;
+}
+
+.mini-info{
+    box-sizing: border-box;
+    padding: 5px 0 0 5px;
+    height: 75px;
+    /* background-color: greenyellow; */
+    border-bottom: 1px solid rgb(124, 124, 124);
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+/* h6{ */
+    /* padding: 0; */
+    /* margin: 0; */
+/* } */
+
+.mini-info > h4{
+    /* color: firebrick; */
+    padding: 0;
+    margin: 0 0 2.25px 0;
+}
+
+.wrapper{
+    width: 370px;
+    height: 150px;
+    /* background-color: mediumslateblue; */
+    margin: 0;
+    padding: 0;
+}
+
+
+.mini-bio{
+    color: #888888;
+    box-sizing: border-box;
+    padding: 0 5px 0 5px;
+    height: 75px;
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+

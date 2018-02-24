@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    height: 15vh;
+
+}
+
+#matches-wrapper{
+    box-sizing: border-box;
+    padding: 0 50px;
+    /* width: 100vw; */
+    height: 80vh;
+    /* background-color: yellow; */
+    display: flex;
+    flex-wrap: wrap;
+    /* flex-direction: column;  */
+    justify-content: space-around;
+    align-items: center;
+}

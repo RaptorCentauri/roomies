@@ -1,0 +1,59 @@
+{
+    
+        "python.pythonPath": "/usr/local/bin/python3.6",
+        "workbench.colorTheme": "Tomorrow",
+        "workbench.iconTheme": "file-icons-colourless",
+        "atomKeymap.promptV3Features": true,
+        "editor.multiCursorModifier": "ctrlCmd",
+        "editor.formatOnPaste": true,
+        "workbench.activityBar.visible": false,
+        "workbench.statusBar.visible": true,
+        "editor.minimap.enabled": false,
+        "editor.renderIndentGuides": false,
+        "editor.fontFamily": "Source Code Pro",
+        "editor.fontWeight": "400",
+        // "editor.fontSize": 14,
+        "zenMode.hideStatusBar": false,
+        "workbench.statusBar.feedback.visible": false,
+        "editor.smoothScrolling": true,
+        "editor.scrollBeyondLastLine": false,
+        "editor.tabSize": 4,
+        "editor.detectIndentation": false,
+        "workbench.colorCustomizations": {
+            //editor
+            "editor.background": "#fdfdfd",
+            "editorLineNumber.foreground": "#aaaaaa",
+            // "input.background": "#ff0000",
+            "terminal.background": "#000000",
+            "terminal.foreground": "#ffffff",
+            "focusBorder": "#eeeeee",
+            "panel.background": "#eeeeee",
+            //dropdowns
+            "dropdown.background": "#eeeeee",
+            "dropdown.border": "#eeeeee",
+            "dropdown.foreground": "#555555",
+            //statusbar
+            "statusBarItem.hoverBackground": "#888888",
+            "statusBar.background": "#777777",
+            //activitybar
+            "activityBar.background": "#666666",
+            "activityBar.border": "#666666",
+            "activityBar.foreground": "#eeeeee",
+            //sidebar
+            // "sideBar.background": "#eeeeee",
+            "sideBar.background": "#eee",
+            "sideBar.foreground": "#888888",
+            "sideBar.border": "#eeeeee",
+            "sideBar.dropBackground": "#dddddd",
+            "sideBarTitle.foreground": "#888888",
+            "sideBarSectionHeader.background": "#eeeeee",
+            "sideBarSectionHeader.foreground": "#888888",
+            //list
+            "list.activeSelectionBackground": "#aaaaaa",
+            "list.activeSelectionForeground": "#eeeeee",
+            "list.inactiveSelectionBackground": "#dddddd",
+            "list.dropBackground": "#cccccc",
+        },
+        "window.zoomLevel": 0,
+    
+}
