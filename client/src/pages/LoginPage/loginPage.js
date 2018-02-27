@@ -4,11 +4,6 @@ import "./loginPage.css"
 import API from "../../util/API.js";
 
 
-
-
-
-
-
 class LoginPage extends React.Component{
     state={
         name:"",
@@ -36,7 +31,6 @@ class LoginPage extends React.Component{
                 <h1>{this.state.name}</h1>
                 <h1>{this.state.color}</h1>
                 <h1>{this.state.species}</h1>
-
 			</div>
 		)
 	}
