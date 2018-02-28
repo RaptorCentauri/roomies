@@ -1,15 +1,21 @@
 import axios from "axios";
 
 export default {
+
+    validateLogin(credentials){
+        return axios.get("/api/login", credentials);
+    }
     //Get profile
     getAll: function(){
         return axios.get("/api/all")
-    }
+    },
 
-    //get match results function
+    getMatches: function () {
+        return axios.get("/api/wherevermatchessearchbelongs")
+    },
 
-    //save result function
-
-    //get saved results function
+    setSearch: function (searchData) {
+        return axios.post("/api/whereversearchsettingsaregoing", searchData)
+    },
 
 }
