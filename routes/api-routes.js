@@ -12,6 +12,8 @@ console.log("t accutaly workts.");
 
 app.get("/api/all", function(req,res){
 
+    //get the model
+
     let myTemp ={
         "name":"Kermit",
         "species": "Frog",
