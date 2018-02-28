@@ -35,9 +35,8 @@ class SignUpPage extends React.Component{
         
 
         //validate Birthday
-        if (this.state.birthday.match(/[0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]/) ){
+        if (this.state.birthday.match(/[0-9]{2}-[0-9]{2}-[0-9]{4}/) ){
             console.log("Allowesd");
-
             API.setProfile(this.state);
         }
         else{
