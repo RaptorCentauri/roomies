@@ -1,7 +1,7 @@
 body{
     margin: 0 auto;
-    /* background-color: blueviolet; */
-    background-image: url("/assets/images/backgrounds/bg3.jpg");
+    background-color: blueviolet;
+    /* background-image: url("/assets/images/backgrounds/bg3.jpg"); */
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;

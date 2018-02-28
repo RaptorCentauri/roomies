@@ -8,23 +8,9 @@
     align-items: center;
     /* flex-direction: column; */
     box-shadow:10px 10px 10px rgb(110, 110, 110);
-
 }
 
-/* #login-wrapper{ */
-    /* margin: 0; */
-    /* padding: 0; */
-    /* background-color: turquoise; */
-    /* width: 100vw; */
-    /* height: 100vh; */
-    /* display: flex; */
-    /* justify-content: center; */
-    /* align-items: center; */
-/* } */
-
-
 #wrapper{
-    /* background-color: peru; */
     height: 300px;
     width: 350px;
     display: flex;
@@ -33,7 +19,6 @@
 }
 
 #input-fields-box{
-    /* background-color: paleturquoise; */
     height: 80px;
     display: flex;
     flex-direction: column;
@@ -66,5 +51,4 @@
 
 #login-button-row button:hover{
     color: #999999;
-
 }

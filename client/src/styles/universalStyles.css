@@ -1,0 +1,17 @@
+select{
+    border: none;
+    border-radius: 0;
+    /* padding-left: 5px; */
+    font-size: 18px;
+    color: blue;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    background: transparent;
+    overflow: hidden;
+} 
+
+textarea{
+    resize: none;
+}
