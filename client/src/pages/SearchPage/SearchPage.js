@@ -1,5 +1,7 @@
 import React from "react"
 import SearchPanel from "../../components/searchPanel/searchPanel.js"
+import API from "../../util/API.js";
+
 
 class SearchPage extends React.Component{
     constructor(props) {
@@ -27,11 +29,12 @@ class SearchPage extends React.Component{
         console.log('Button was clicked');
         // this.setState({pets: "Puppy"});
         console.log(this.state);
+        API.getMatches(this.state);
     };
 
     render(){
         return(
-            <SearchPanel clicky={this.testClick} gender={this.state.gender} handleInputChange={this.handleInputChange} />
+            <SearchPanel clickBtn={this.testClick} gender={this.state.gender} handleInputChange={this.handleInputChange} />
         )
     }
 

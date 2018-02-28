@@ -11,7 +11,6 @@ module.exports = (app)=>{
 console.log("t accutaly workts.");
 
 app.get("/api/all", function(req,res){
-
     //get the model
 
     let myTemp ={
@@ -22,6 +21,22 @@ app.get("/api/all", function(req,res){
 
     res.send(myTemp);
 });
+
+
+app.post("/api/profile", function (req,res) {
+    //set user profile
+    console.log("post Made to /api/profile");
+    
+    console.log(req.body);  
+})
+
+app.get("/api/matches", function(req,res){
+    console.log("request made to /api/matches");
+    
+    temp = JSON.parse(req.query.matchData);
+    console.log(temp);
+    
+})
 
 
 // app.get("/", function(req,res){

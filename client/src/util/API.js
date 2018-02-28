@@ -4,18 +4,22 @@ export default {
 
     validateLogin(credentials){
         return axios.get("/api/login", credentials);
-    }
+    },
+
     //Get profile
     getAll: function(){
         return axios.get("/api/all")
     },
 
-    getMatches: function () {
-        return axios.get("/api/wherevermatchessearchbelongs")
+
+    //get users from the DB that match the users search Parameters
+    getMatches: function (matchData) {
+        return axios.get("/api/matches",{ params:{matchData}})
     },
 
-    setSearch: function (searchData) {
-        return axios.post("/api/whereversearchsettingsaregoing", searchData)
+    //Sets user profile !!!!WORKING!!!
+    setProfile: function (profileData) {
+        return axios.post("/api/profile", profileData)
     },
 
 }

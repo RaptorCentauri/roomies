@@ -6,6 +6,7 @@ class SearchPanel extends React.Component {
     render() {
         return (
             <div id="profile-create-panel">
+                <h1>WHERE THE USER SETS SEARCH PARAMETERS</h1>
                 <form action="" method="">
                     <p>Show me 
 						<select name="gender" onChange={this.props.handleInputChange}>
@@ -41,7 +42,7 @@ class SearchPanel extends React.Component {
 					</select>
 
                     {/* Bio  text field*/}
-                    <button onClick={this.props.clicky}>Test</button>
+                    <button onClick={this.props.clickBtn}>Test</button>
 
                 </form>
             </div>

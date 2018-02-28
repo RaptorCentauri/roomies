@@ -1,11 +1,12 @@
 import React from "react"
 import CreateProfilePanel from "../../components/createProfilePanel/createProfilePanel.js"
+import API from "../../util/API.js";
 
 class SignUpPage extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            firstName: "John",
+            firstName: "",
             lastName: "Doe",
             birthday:"",
             gender: "man",
@@ -30,6 +31,19 @@ class SignUpPage extends React.Component{
         console.log('Button was clicked');
         // this.setState({pets: "Puppy"});
         console.log(this.state);
+        console.log(typeof (this.state.birthday));
+        
+
+        //validate Birthday
+        if (this.state.birthday.match(/[0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]/) ){
+            console.log("Allowesd");
+
+            API.setProfile(this.state);
+        }
+        else{
+            console.log("Invalid FIELDS");
+        }
+
     };
 
     render(){
