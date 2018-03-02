@@ -8,14 +8,14 @@ class SearchPanel extends React.Component {
             <div id="profile-create-panel">
                 <h1>WHERE THE USER SETS SEARCH PARAMETERS</h1>
                 <form action="" method="">
-                    <p>Show me 
+                    <p>Show me 
 						<select name="gender" onChange={this.props.handleInputChange}>
-                            <option value="men">Man</option>
-                            <option value="women">Woman</option>
+                            <option value="men">men</option>
+                            <option value="women">women</option>
                         </select>
                     </p>
 
-                    <p>Who have
+                    <p>Who have 
 						<select name="pets" onChange={this.props.handleInputChange}>
                             <option value="None">no pets</option>
                             <option value="Cat">cat(s)</option>
@@ -25,14 +25,14 @@ class SearchPanel extends React.Component {
                         </select>
                     </p>
 
+                    <p>Who 
+                        <select name="smokes" onChange={this.props.handleInputChange}>
+                            <option value={false}>do not smoke</option>
+                            <option value={true}>smoke</option>
+                        </select>
+                    </p>
 
-                    <select name="smokes" onChange={this.props.handleInputChange}>
-                    
-                        <option value={false}>I do not Smoke</option>
-                        <option value={true}>I Smoke</option>
-                    </select>
-
-
+                    <p>Who can afford a rent of 
                     <select name="rent" onChange={this.props.handleInputChange}>
                         <option value={1000} > 1000</option>
 						<option value={2000} > 2000</option>
@@ -40,6 +40,7 @@ class SearchPanel extends React.Component {
 						<option value={4000} > 4000</option>
 						<option value={5000} > 5000</option>
 					</select>
+                    </p>
 
                     {/* Bio  text field*/}
                     <button onClick={this.props.clickBtn}>Test</button>

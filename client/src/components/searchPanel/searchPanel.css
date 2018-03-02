@@ -3,26 +3,3 @@
     width: 500px;
     background-color: #eeeeee;
 }
-
-select{
-    border: none;
-    border-radius: 0;
-    padding-left: 5px;
-    color: blueviolet;
-    appearance: none;
-     -webkit-appearance: none;
-   -moz-appearance: none;
-    outline: none;
-    background: transparent;
-    /* overflow: hidden; */
-}
-
-select option{
-    appearance: none;
-    background-color: fuchsia;
-    color: gold;
-}
-
-option:not(:checked){
-    color: firebrick !important;
-}

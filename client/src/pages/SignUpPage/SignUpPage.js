@@ -4,25 +4,24 @@ import CreateProfilePanel from "../../components/createProfilePanel/createProfil
 // import Helpers from "../../util/Helpers.js";
 
 class SignUpPage extends React.Component{
-	state = {
-		profile: {
-			firstName: null,
-			lastName: null,
-			birthday: null,
-			gender: null,
-			pets: null,
-			smokes: false,
+    state = {
+        profile: {
+            firstName: null,
+            lastName: null,
+            birthday: null,
+            gender: null,
+            pets: null,
+            smokes: false,
             rent: null,
             bio: null
-		},
+        },
 
-		profileErrors: {
-			firstNameError: null,
-			lastNameError: null,
-			birthdayError: null,
-		}
-
-	};
+        profileErrors: {
+            firstNameError: null,
+            lastNameError: null,
+            birthdayError: null,
+        }
+    };
 
 	validate = () => {
 		let isError = false;
