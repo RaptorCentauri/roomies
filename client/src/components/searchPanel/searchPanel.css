@@ -1,5 +1,9 @@
-#profile-create-panel{
+#search-wrapper{
     height: 300px;
     width: 500px;
-    background-color: #eeeeee;
+    background-color: #ffffff;
+}
+
+#search-title{
+    background-color: red;
 }

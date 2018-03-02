@@ -4,24 +4,55 @@ import API from "../../util/API.js";
 
 
 class SearchPage extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state = {   
-            gender: "man",
-            pets: "none",
-            smokes: false,
-            rent: 1000
+
+       state = {
+           searchParams:{
+               gender: "both",
+               pets: "none",
+               smokes: false,
+               rent: 1000
+           },
         };
-    }
 
 
-    handleInputChange = (event) =>{
+
+
+
+    handleInputChange = (event) => {
         const target = event.target;
         const value = target.value;
         const name = target.name;
 
-        this.setState({[name]:value});
+        this.setState({ searchParams: { ...this.state.searchParams, [name]: value } });
+
+        // console.log(this.state.searchParams);
+        
+
+        // this.naturalLanguage();
+        // console.log(this.naturalLanguage());
+        
     }
+
+
+    // naturalLanguage = () =>{
+    //     let pronoun
+    //     switch (this.state.searchParams.gender) {
+    //         case "both": pronoun = "he or she";  
+    //             break;
+
+    //         case "man": pronoun = "he";
+    //             break;
+
+    //         case "woman": pronoun = "she";
+    //             break;
+        
+    //         default:
+    //             break;
+    //     }
+    //     return pronoun;
+    // }
+
+
 
 
     testClick = (event) => {
@@ -34,7 +65,7 @@ class SearchPage extends React.Component{
 
     render(){
         return(
-            <SearchPanel clickBtn={this.testClick} gender={this.state.gender} handleInputChange={this.handleInputChange} />
+            <SearchPanel clickBtn={this.testClick} blah={this.pronoun} searchGender={this.state.searchParams.gender} handleInputChange={this.handleInputChange} />
         )
     }
 

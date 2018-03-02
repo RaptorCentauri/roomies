@@ -1,6 +1,6 @@
 import React from "react"
 import CreateProfilePanel from "../../components/createProfilePanel/createProfilePanel.js"
-// import API from "../../util/API.js";
+import API from "../../util/API.js";
 // import Helpers from "../../util/Helpers.js";
 
 class SignUpPage extends React.Component{
@@ -60,11 +60,11 @@ class SignUpPage extends React.Component{
 			isError = true;
 			errors.birthdayError = "Please Enter a  Birthday";
 		}
-		else if (!this.state.profile.birthday.match(/[0-9]{2}-[0-9]{2}-[0-9]{4}/)) {
-			isError = true;
-			console.log("bday error");
-			errors.birthdayError = "Wrong Bday format";
-        }
+		// else if (!this.state.profile.birthday.match(/[0-9]{2}\/[0-9]{2}\/[0-9]{4}/)) {
+		// 	isError = true;
+		// 	console.log("bday error");
+		// 	errors.birthdayError = "Wrong Bday format";
+        // }
         
 
         if (!this.state.profile.bio) {
@@ -96,7 +96,7 @@ class SignUpPage extends React.Component{
             console.log("form OK");
             console.log(this.state.profile);
             
-			// API.setProfile(this.state);
+			API.setProfile(this.state.profile);
 		}
 		else{
 			console.log("Form Bad");
@@ -113,7 +113,6 @@ class SignUpPage extends React.Component{
 			handleInputChange={this.handleInputChange} />
         )
     }
-
 }
 
 export default SignUpPage;

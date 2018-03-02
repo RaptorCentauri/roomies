@@ -7,25 +7,6 @@ import SearchPage from "./pages/SearchPage/SearchPage.js"
 import './App.css';
 
 class App extends React.Component{
-	// state = {
-	// 	profile: {
-	// 		firstName: null,
-	// 		lastName: null,
-	// 		birthday: null,
-	// 		gender: null,
-	// 		pets: null,
-	// 		smokes: false,
-	// 		rent: null,
-	// 		bio: null
-	// 	},
-
-	// 	profileErrors: {
-	// 		firstNameError: null,
-	// 		lastNameError: null,
-	// 		birthdayError: null,
-	// 	}
-	// };
-
 	render(){
 		return(
 			<Router>
