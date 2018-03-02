@@ -19,6 +19,7 @@ export default {
 
     //Sets user profile !!!!WORKING!!!
     setProfile: function (profileData) {
+        console.log(`Sending to Server: ${profileData}`);
         return axios.post("/api/profile", profileData)
     },
 

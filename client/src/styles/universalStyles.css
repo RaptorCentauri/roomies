@@ -1,17 +1,28 @@
 select{
     border: none;
+    /* border: 1px solid red; */
     border-radius: 0;
-    /* padding-left: 5px; */
-    /* font-size: 18px; */
-    color: blue;
+    /* width: 50px; */
+    padding-left: 2.5px;
+    color: rgb(76, 76, 76);
+    font-weight: 500;
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
     outline: none;
-    background: transparent;
+    /* background: transparent; */
     overflow: hidden;
-} 
+    /* background: url("/assets/images/ui-elements/selectArrow.svg") no-repeat right; */
+}
+
+select:focus{
+    width: auto;
+}
 
 textarea{
     resize: none;
 }
+
+
+
+

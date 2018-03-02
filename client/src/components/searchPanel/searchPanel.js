@@ -32,8 +32,8 @@ class SearchPanel extends React.Component {
                         <br/>
 
                         <select name="smokes" onChange={this.props.handleInputChange}>
-                            <option value={false}>{this.props.searchGender === "both" ? "He or she" : this.props.searchGender === "man" ? "He" : "She"} is not a smoker</option>
-                            <option value={true}>{this.props.searchGender === "both" ? "He or she" : this.props.searchGender === "man" ? "He" : "She"} is a smoker</option>
+                            <option value={false}>{this.props.searchGender === "both" ? "He or she" : this.props.searchGender === "man" ? "He" : "She"} can not be a smoker</option>
+                            <option value={true}>{this.props.searchGender === "both" ? "He or she" : this.props.searchGender === "man" ? "He" : "She"} can be a smoker</option>
                         </select>
 
                         <br/>
@@ -47,8 +47,10 @@ class SearchPanel extends React.Component {
 					</select>
 
                     <br/>
+                    <br />
 
-                    <button onClick={this.props.clickBtn}>Test</button>
+
+                    <button id="search-button" onClick={this.props.clickBtn}>Find Me A Roomie!</button>
 
                 </form>
             </div>

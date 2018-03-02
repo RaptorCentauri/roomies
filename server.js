@@ -3,6 +3,10 @@ const path = require('path');
 const bodyParser = require("body-parser");
 
 
+//Models
+const db = require("./models");
+
+
 var app = express();
 var port = process.env.PORT || 5000;
 
@@ -10,6 +14,7 @@ var port = process.env.PORT || 5000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
+app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 
 
@@ -22,11 +27,6 @@ app.get('*', function (request, response) {
     response.sendFile(path.resolve(__dirname, './client/build', 'index.html'))
 })
 
-
-
-// require("./routes/html-routes.js")(app);
-
-
-app.listen(port, () => console.log(`Listening on port ${port}`));
-
-
+db.sequelize.sync().then(function () {
+    app.listen(port, () => console.log(`Listening on port ${port}`));
+});

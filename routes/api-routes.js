@@ -3,6 +3,10 @@
 // const signup = require("../controllers/signup.js");
 // const jwt = require("jsonwebtoken");
 
+const UserDB = require("../models/user.js");
+// const AccountDB = require("../models/accounts.js");
+// const Accounts = 
+
 module.exports = (app)=>{
 
 
@@ -24,10 +28,23 @@ app.get("/api/all", function(req,res){
 
 
 app.post("/api/profile", function (req,res) {
-    //set user profile
+
     console.log("post Made to /api/profile");
+
+    let profile = req.body;
+
+    console.log(profile);
+
+
+    UserDB.create({
+        firstName: profile.firstName,
+        lastName: profile.lastName,
+        pets: profile.pets,
+        smoker: profile.smokes
+    }).then(()=> console.log('GOOD ADD TO DB'));
+    //set user profile
+
     
-    console.log(req.body);  
 })
 
 app.get("/api/matches", function(req,res){
@@ -35,7 +52,6 @@ app.get("/api/matches", function(req,res){
     
     temp = JSON.parse(req.query.matchData);
     console.log(temp);
-    
 })
 
 
