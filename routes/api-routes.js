@@ -10,6 +10,11 @@ const db = require("../models");
 module.exports = (app)=>{
 
 app.get("/api/all", function(req,res){
+
+
+
+
+
     //get the model
 
     let myTemp ={
@@ -43,6 +48,18 @@ app.get("/api/matches", function(req,res){
     
     temp = JSON.parse(req.query.matchData);
     console.log(temp);
+
+        db.user.findAll({
+        where:{
+            gender: temp.gender, 
+            pets: temp.pets,
+            smoker: temp.smokes,
+            rent: temp.rent
+        }
+    }).then(function(dbMatches){
+        console.log(dbMatches);
+    });
+
 })
 
 
