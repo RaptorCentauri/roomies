@@ -11,10 +11,6 @@ module.exports = (app)=>{
 
 app.get("/api/all", function(req,res){
 
-
-
-
-
     //get the model
 
     let myTemp ={
@@ -38,8 +34,12 @@ app.post("/api/profile", function (req,res) {
     db.user.create({
         firstName: profile.firstName,
         lastName: profile.lastName,
+        // birthday: profile.birthday,
+        aboutMe: profile.bio,
+        gender: profile.gender,
         pets: profile.pets,
-        smoker: profile.smokes
+        smokes: profile.smokes,
+        rent: profile.rent
     }).then(()=> console.log('GOOD ADD TO DB'));    
 })
 
@@ -52,12 +52,12 @@ app.get("/api/matches", function(req,res){
         db.user.findAll({
         where:{
             gender: temp.gender, 
-            pets: temp.pets,
-            smoker: temp.smokes,
-            rent: temp.rent
+            // pets: temp.pets,
+            // smokes: temp.smokes,
+            // rent: temp.rent
         }
     }).then(function(dbMatches){
-        console.log(dbMatches);
+        res.json(dbMatches);
     });
 
 })

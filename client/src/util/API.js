@@ -14,7 +14,8 @@ export default {
 
     //get users from the DB that match the users search Parameters
     getMatches: function (matchData) {
-        return axios.get("/api/matches",{ params:{matchData}})
+        return axios.get("/api/matches", {params:{matchData}})
+            .then((res) => console.log(res.data))
     },
 
     //Sets user profile !!!!WORKING!!!

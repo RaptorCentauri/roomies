@@ -3,31 +3,31 @@ module.exports = function(sequelize, DataTypes) {
     var user = sequelize.define('user', {
         user_id: {
             type: DataTypes.INTEGER,
-        }, 	
+        },
         firstName: {
             type: DataTypes.STRING,
         },
         lastName: {
-        type: DataTypes.STRING	
+            type: DataTypes.STRING	
         },
-        rent: {
-            type: DataTypes.INTEGER
-        },
-        smoker: {
+        // birthday: {
+        //     type: DataTypes.INTEGER
+        // },
+        aboutMe: {
+            type: DataTypes.TEXT
+        }, 
+        gender:{
             type: DataTypes.STRING
-        },
-        age: {
-            type: DataTypes.INTEGER
-        },
-        zipCode: {
-            type: DataTypes.INTEGER
         },
         pets: {
             type: DataTypes.STRING
         },
-        aboutMe: {
-            type: DataTypes.TEXT
-        },   
+        smokes: {
+            type: DataTypes.STRING
+        },
+        rent: {
+            type: DataTypes.INTEGER
+        },
     },
     {
     timestamps: false}

@@ -26,8 +26,8 @@ class SearchPage extends React.Component{
         event.preventDefault();
         console.log('Button was clicked');
         // this.setState({pets: "Puppy"});
-        console.log(this.state);
-        API.getMatches(this.state);
+        console.log(this.state.searchParams);
+        API.getMatches(this.state.searchParams);
     };
 
     render(){

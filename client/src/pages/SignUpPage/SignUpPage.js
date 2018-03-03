@@ -59,7 +59,8 @@ class SignUpPage extends React.Component{
 		if (!this.state.profile.birthday) {
 			isError = true;
 			errors.birthdayError = "Please Enter a  Birthday";
-		}
+        }
+        
 		// else if (!this.state.profile.birthday.match(/[0-9]{2}\/[0-9]{2}\/[0-9]{4}/)) {
 		// 	isError = true;
 		// 	console.log("bday error");
