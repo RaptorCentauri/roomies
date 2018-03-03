@@ -1,18 +1,13 @@
-// const db = require("../models"), Sequelize = require('sequelize'), Op = Sequelize.Op;
+// const UserDB = require("../models"), Sequelize = require('sequelize'), Op = Sequelize.Op;
 // const users = require("../controllers/login.js");
 // const signup = require("../controllers/signup.js");
 // const jwt = require("jsonwebtoken");
 
-const UserDB = require("../models/user.js");
+const db = require("../models");
 // const AccountDB = require("../models/accounts.js");
 // const Accounts = 
 
 module.exports = (app)=>{
-
-
-
-
-console.log("t accutaly workts.");
 
 app.get("/api/all", function(req,res){
     //get the model
@@ -35,16 +30,12 @@ app.post("/api/profile", function (req,res) {
 
     console.log(profile);
 
-
-    UserDB.create({
+    db.user.create({
         firstName: profile.firstName,
         lastName: profile.lastName,
         pets: profile.pets,
         smoker: profile.smokes
-    }).then(()=> console.log('GOOD ADD TO DB'));
-    //set user profile
-
-    
+    }).then(()=> console.log('GOOD ADD TO DB'));    
 })
 
 app.get("/api/matches", function(req,res){

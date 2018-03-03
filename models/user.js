@@ -1,4 +1,3 @@
-//Creates a model that matches up with DB
 module.exports = function(sequelize, DataTypes) {
 
     var user = sequelize.define('user', {
