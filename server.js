@@ -21,12 +21,11 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 require("./routes/api-routes.js")(app);
 
 //THIS IS HOW YOU SEND THE REACT APP!
-// app.use(express.static("client/build"));
-app.use(express.static("build"));
+app.use(express.static("client/build"));
 
 
 app.get('*', function (request, response) {
-    response.sendFile(path.join(__dirname, 'build', 'index.html'))
+    response.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
 })
 
 // app.get('*', function (request, response) {
