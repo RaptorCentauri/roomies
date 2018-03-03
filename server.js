@@ -24,7 +24,7 @@ require("./routes/api-routes.js")(app);
 app.use(express.static("client/build"));
 
 app.get('*', function (request, response) {
-    response.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
+    response.sendFile(path.join(__dirname, 'index.html'))
 })
 
 db.sequelize.sync().then(function () {
