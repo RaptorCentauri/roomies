@@ -24,10 +24,12 @@ require("./routes/api-routes.js")(app);
 app.use(express.static("client/build"));
 
 app.get('*', function (request, response) {
-
-    //a comment for dave: i removed __dirname. only change I made. 
-    response.sendFile(path.join('index.html'))
+    response.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
 })
+
+// app.get('*', function (request, response) {
+//     response.sendFile(__dirname, 'index.html')
+// })
 
 db.sequelize.sync().then(function () {
     app.listen(port, () => console.log(`Listening on port ${port}`));
