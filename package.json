@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Finding a roommate app!",
   "main": "index.js",
+  "heroku-postbuild": "yarn build",
+  "engines":{
+      "node": "9.5.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
