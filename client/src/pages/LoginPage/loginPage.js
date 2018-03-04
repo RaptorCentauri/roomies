@@ -6,31 +6,45 @@ import API from "../../util/API.js";
 
 class LoginPage extends React.Component{
     state={
-        name:"",
-        species:"",
-        color:""   
+        credentials:{
+            email: null,
+            password: null,
+        }
     }
 
-    componentDidMount() {
-        this.sampleLoad();
+    handleInputChange = (event) => {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+        this.setState({ credentials: { ...this.state.credentials, [name]: value } });
     }
 
+    handleLoginClick = (event) => {
+        event.preventDefault();
+        console.log(this.state.credentials);
 
-    sampleLoad = () =>{
-        API.getAll()
-            // .then(res => console.log(res.data.name));
-
-            .then(res => this.setState({name: res.data.name, species: res.data.species, color: res.data.color }))
+        API.validateLogin(this.state.credentials);
     }
+    
+
+    // sampleLoad = () =>{
+    //     API.getAll()
+    //         // .then(res => console.log(res.data.name));
+
+    //         .then(res => this.setState({name: res.data.name, species: res.data.species, color: res.data.color }))
+    // }
 
 	render(){
 		return(
 			<div id="login-wrapper">
 				<h1 id="login-header">Welcome to Roomies!</h1>
-				<LoginPanel/>
-                <h1>{this.state.name}</h1>
-                <h1>{this.state.color}</h1>
-                <h1>{this.state.species}</h1>
+                <LoginPanel foo={this.handleInputChange}
+                
+                
+                loginBtn={this.handleLoginClick} />
+                {/* <h1>{this.state.name}</h1> */}
+                {/* <h1>{this.state.color}</h1> */}
+                {/* <h1>{this.state.species}</h1> */}
 			</div>
 		)
 	}

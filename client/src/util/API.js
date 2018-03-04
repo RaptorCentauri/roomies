@@ -3,7 +3,11 @@ import axios from "axios";
 export default {
 
     validateLogin(credentials){
-        return axios.get("/api/login", credentials);
+        console.log("LOGINING IN USER");
+        console.log(`email: ${credentials.email}`);
+        console.log(`pass: ${credentials.password}`);
+    
+        return axios.post("/api/login", credentials);
     },
 
     //Get profile
@@ -23,5 +27,8 @@ export default {
         console.log(`Sending to Server: ${profileData}`);
         return axios.post("/api/profile", profileData)
     },
+
+
+
 
 }

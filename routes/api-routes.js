@@ -9,6 +9,21 @@ const db = require("../models");
 
 module.exports = (app)=>{
 
+    app.post("/api/login", function (req, res) {
+
+        console.log("post Made to /api/login");
+
+        let profile = req.body;
+
+        console.log(profile);
+
+        db.accounts.create({
+            userId: "placeholder",
+            email: profile.email,
+            password: profile.password,
+        }).then(() => console.log('GOOD ADD TO DB'));
+    })
+
 app.get("/api/all", function(req,res){
 
     //get the model
