@@ -8,17 +8,19 @@ class SignUpPage extends React.Component{
         profile: {
             firstName: null,
             lastName: null,
-            birthday: null,
-            gender: null,
-            pets: null,
+            bio: null,
+
+            // birthday: null,
+            gender: "man",
+            pets: "none",
             smokes: false,
-            rent: null,
-            bio: null
+            rent: 500,
         },
         profileErrors: {
             firstNameError: null,
             lastNameError: null,
-            birthdayError: null,
+            bioError: null
+            // birthdayError: null,
         }
     };
 
@@ -53,10 +55,10 @@ class SignUpPage extends React.Component{
         }
         
         //Check for Birthday Errors
-		if (!this.state.profile.birthday) {
-			isError = true;
-			errors.birthdayError = "Please Enter a  Birthday";
-        }
+		// if (!this.state.profile.birthday) {
+		// 	isError = true;
+		// 	errors.birthdayError = "Please Enter a  Birthday";
+        // }
         
 		// else if (!this.state.profile.birthday.match(/[0-9]{2}\/[0-9]{2}\/[0-9]{4}/)) {
 		// 	isError = true;
@@ -76,26 +78,21 @@ class SignUpPage extends React.Component{
 		return isError;
 	}
 
-    handleInputChange = (event) =>{
-        const target = event.target;
+    handleInputChange = (e) =>{
+        const target = e.target;
         const value = target.value;
 		const name = target.name;
-		
+
 		this.setState({ profile: { ...this.state.profile, [name]: value } });
     }
 
-    handleClick = (event) => {
-		event.preventDefault();
+    handleClick = (e) => {
+		e.preventDefault();
 		
-		if (!this.validate()){
-            console.log("form OK");
+		if (!this.validate()){            
+            API.setProfile(this.state.profile);
             console.log(this.state.profile);
-            
-			API.setProfile(this.state.profile);
-		}
-		else{
-			console.log("Form Bad");
-		}
+        }    
     };
 
     render(){

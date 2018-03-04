@@ -47,11 +47,10 @@ class CreateProfilePanel extends React.Component{
                         <br/>
 
 						<select name="pets" onChange={this.props.handleInputChange}>
-							<option value="None">I have no pets</option>
-							<option value="Cat">I have cat(s)</option>
-							<option value="Dog">I have dog(s)</option>
-							<option value="Both">I have both cat(s) and dog(s)</option>
-							<option value="Other">I have pets, but they are not cats or dogs</option>
+							<option value="none">I do not have pets</option>
+							<option value="cat">I have cat(s)</option>
+							<option value="dog">I have dog(s)</option>
+                            <option value="both">I have cat(s) and dog(s)</option>
 						</select>
 
                     <br />
