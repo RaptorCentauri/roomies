@@ -5,20 +5,17 @@ const db = require("../models");
 
 validateUser = (email, password) => {
     return new Promise((resolve, reject)=>{
-
         db.accounts.findOne({
             where: { email: email }
         }).then((user) => {
-            let temp = bcrypt.compareSync(password, user.password);
-            resolve(temp)
+            if(!user){
+                resolve(false);
+            }
+            else{
+                resolve(bcrypt.compareSync(password, user.password));
+            }
         });
     })
-
 }
 
 module.exports = validateUser;
-
-
-
-
-// validateUser().then((val)=>console.log(val));
