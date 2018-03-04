@@ -8,14 +8,16 @@ class LoginPanel extends React.Component{
                 <div id="wrapper">
                     <form action="" method="get">
                         <div id="input-fields-box">
-                            <input onChange={this.props.foo} type="email" name="email" placeholder="email" className="input-field" />
-                            <input onChange={this.props.foo} type="password" name="password" placeholder="password" className="input-field" />
+                            <input onChange={this.props.handleInputChange} type="email" name="email" placeholder="email" className="input-field" />
+							<input onChange={this.props.handleInputChange} type="password" name="password" placeholder="password" className="input-field" />
                         </div>
                         <div id="login-button-row">
-                            <button onClick={this.props.loginBtn} type="submit">Login</button>
-                            <button onClick={this.props.newUser} type="submit">NEW USER</button>
+                            <button onClick={this.props.loginUser} type="submit">Login</button>
 
-                            {/* <button type="submit">Login</button> */}
+							{/* ONlY FOR TESTING!! */}
+                            <button onClick={this.props.createUser} type="submit">NEW USER</button> 
+							{/* ONlY FOR TESTING!! */}
+
                         </div>
                     </form>
                 </div>
