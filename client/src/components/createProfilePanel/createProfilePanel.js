@@ -2,68 +2,71 @@ import React from "react";
 import "../../styles/universalStyles.css"
 import "./createProfilePanel.css";
 
-
 class CreateProfilePanel extends React.Component{
+
+    rentSelect = () => {
+        let rent = [];
+        for(let i=500; i<=3000; i+=250){
+            rent.push(i)
+        }
+        let rentOptions = rent.map(function (i) {
+            return <option value={i} key={i}>I can afford a rent of ${i}</option>;
+        })
+        return <select name="rent" onChange={this.props.handleInputChange}>{rentOptions}</select>
+    }
+
+
 	render(){
 		return(
 			<div id="profile-wrapper">
-                <h1>Tell Us About You</h1>
-
 				<form action="" method="">
                     <div className="field-wrapper">
+
+                        <h1>NEED TO ADD USER_AVATAR</h1>
+                        <br/>
+
                         <input className="input-style" onChange={this.props.handleInputChange} type="text" placeholder="First Name" name="firstName"/>
                         <h6 className="error-style">{this.props.firstNameError}</h6>
                 
                         <input className="input-style" onChange={this.props.handleInputChange} type="text" name="lastName" placeholder="Last Name" />
                         <h6 className="error-style">{this.props.lastNameError}</h6>
 
-                        <input className="input-style" onChange={this.props.handleInputChange} type="date" name="birthday" placeholder="MM-DD-YYYY" pattern="[0-9]{2}" />
-                        <h6 className="error-style">{this.props.birthdayError}</h6>
-
+                        {/* <input className="input-style" onChange={this.props.handleInputChange} type="date" name="birthday" placeholder="MM-DD-YYYY" pattern="[0-9]{2}" /> */}
+                        {/* <h6 className="error-style">{this.props.birthdayError}</h6> */}
 
                         <textarea className="input-style" onChange={this.props.handleInputChange} placeholder="Make yourself stand out..." name="bio" rows="5"></textarea>
                         <h6 className="error-style">{this.props.bioError}</h6>
-
                     </div>
     
-                    {/* <input type="file" name="" id=""/>  THIS MAY BE USEFUL FOR AVATAR */}
 		
-                    <p className="gdrop">I am a 
  						<select name="gender" onChange={this.props.handleInputChange}>
-                            <option value="man">man</option>
- 							<option value="woman">woman</option>
- 						</select>
-                    </p>
-					
+                            <option value="man">I am a man</option>
+ 							<option value="woman">I am a woman</option>
+ 						</select>					
 
-                    <p className="gdrop">I have 
+                        <br/>
+
 						<select name="pets" onChange={this.props.handleInputChange}>
-							<option value="None">no pets</option>
-							<option value="Cat">cat(s)</option>
-							<option value="Dog">dog(s)</option>
-							<option value="Both">both cat(s) and dog(s)</option>
-							<option value="Other">other pets</option>
+							<option value="None">I have no pets</option>
+							<option value="Cat">I have cat(s)</option>
+							<option value="Dog">I have dog(s)</option>
+							<option value="Both">I have both cat(s) and dog(s)</option>
+							<option value="Other">I have pets, but they are not cats or dogs</option>
 						</select>
-					</p>
+
+                    <br />
 
 
-                    <p className="gdrop">I 
                         <select name="smokes" onChange={this.props.handleInputChange}>
-                            <option value={false}>do not smoke</option>
-                            <option value={true}>do smoke</option>
+                            <option value={false}>I am not a smoker</option>
+                            <option value={true}>I am a smoker</option>
                         </select>
-                    </p>
 
-                    <p className="gdrop">I can afford a rent of 
-                        <select name="rent" onChange={this.props.handleInputChange}>
-                            <option value={1000}>1000</option>
-                            <option value={2000}>2000</option>
-                            <option value={3000}>3000</option>
-                            <option value={4000}>4000</option>
-                            <option value={5000}>5000</option>
-                        </select>
-                    </p>
+                        <br/>
 
+                        {this.rentSelect()}
+
+                        <br/>
 
 					<button onClick={this.props.clicky}>Test</button>
 

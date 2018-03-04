@@ -15,7 +15,6 @@ class SignUpPage extends React.Component{
             rent: null,
             bio: null
         },
-
         profileErrors: {
             firstNameError: null,
             lastNameError: null,
@@ -36,23 +35,21 @@ class SignUpPage extends React.Component{
         //Check for First Name Errors
 		if (!this.state.profile.firstName) {
 			isError = true;
-			errors.firstNameError = "Please Enter a First Name";	
+			errors.firstNameError = "Please enter you first name.";	
 		}
 		else if(this.state.profile.firstName.match(/\d/)){
 			isError = true;
-			console.log("has numbers");
-			errors.firstNameError = "First Name Cannont have number";	
+			errors.firstNameError = "First name cannot contain numbers.";	
 		}
 
         //Check for Last Name Errors
 		if (!this.state.profile.lastName) {
 			isError = true;
-			errors.lastNameError = "Please Enter a Last Name";
+            errors.lastNameError = "Please enter you last name.";
 		}
 		else if (this.state.profile.lastName.match(/\d/)) {
 			isError = true;
-			console.log("has numbers");
-			errors.lastNameError = "First Name Cannont have number";
+            errors.lastNameError = "Last name cannot contain numbers";
         }
         
         //Check for Birthday Errors
@@ -67,18 +64,15 @@ class SignUpPage extends React.Component{
 		// 	errors.birthdayError = "Wrong Bday format";
         // }
         
-
         if (!this.state.profile.bio) {
             isError = true;
-            errors.bioError = "Please Fill in the about me";
+            errors.bioError = "A short bio is required";
         }
 
 
 		if (isError){
 			this.setState({ ...this.state.profile, profileErrors: { ...this.state.profileErrors, ...errors } });
-			console.log(errors);
 		}
-		
 		return isError;
 	}
 
