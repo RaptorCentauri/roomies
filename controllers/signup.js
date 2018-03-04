@@ -1,19 +1,23 @@
+const bcrypt = require('bcrypt');
+const db = require("../models");
 
-let con = require('../config/connection.js');
-let bcrypt = require('bcrypt-nodejs');
 
-function addUser(email, password, firstName, lastName, birthday, gender, pets, smoking, rent, about, cb, res){
-    console.log(email);
-    bcrypt.hash(password, 5, function( err, bcryptedPassword) {
-        let newPassword = bcryptedPassword;
-        console.log(newPassword);
+createNewAccount = (email, password) => {
+    let newAccount ={
+        email: email,
+        password: null
+    }
+    
+    bcrypt.hash(password, 5).then((hash)=>{
 
-        let sql = `INSERT INTO roommates (email, password, firstName, lastName, birthday, gender, pets, smoking, rent, about) VALUES ("${email}", "${newPassword}", "${firstName}", "${lastName}", "${birthday}","${gender}", "${pets}", "${smoking}", "${rent}", "${about}");`
+        newAccount.password = hash;
 
-        con.query(sql, function (err, result) {
-            if (err) throw err;
-        });
-    });
+        db.accounts.create({
+            email: newAccount.email,
+            password: newAccount.password
+        }).then(()=>console.log("Added user to Db"));
+    })
+
 }
 
-module.exports = addUser;
+module.exports = createNewAccount;

@@ -1,6 +1,6 @@
 // const UserDB = require("../models"), Sequelize = require('sequelize'), Op = Sequelize.Op;
 // const users = require("../controllers/login.js");
-// const signup = require("../controllers/signup.js");
+const signup = require("../controllers/signup.js");
 // const jwt = require("jsonwebtoken");
 
 const db = require("../models");
@@ -9,36 +9,47 @@ const db = require("../models");
 
 module.exports = (app)=>{
 
+
+
+
     app.post("/api/login", function (req, res) {
 
-        console.log("post Made to /api/login");
+        // console.log(req.body);
+        
+        db.accounts.findOne({
+            where:{
+                email:req.body.email,
+                password:req.body.password
+            }
+        }).then(function (dbMatches) {
+            if(!dbMatches){
+                console.log("NO SUCH USER");   
+            }
+            else{
+                console.log(dbMatches);
+            }
+        });
 
-        let profile = req.body;
-
-        console.log(profile);
-
-        db.accounts.create({
-            userId: "placeholder",
-            email: profile.email,
-            password: profile.password,
-        }).then(() => console.log('GOOD ADD TO DB'));
     })
 
-app.get("/api/all", function(req,res){
 
-    //get the model
+    app.post("/api/newacct", function (req, res) {
+        
+        // console.log(req.body);
+        createNewAccount(req.body.email, req.body.password);
+        // console.log("API: " + newuser);
+        
 
-    let myTemp ={
-        "name":"Kermit",
-        "species": "Frog",
-        "color": "Green"
-    };
-
-    res.send(myTemp);
-});
+        
+        // db.accounts.create({
+        //         email: req.body.email,
+        //         password: req.body.password
+        // }).then(`Added user ${req.body.email}`);
+    });
 
 
-app.post("/api/profile", function (req,res) {
+
+    app.post("/api/profile", function (req,res) {
 
     console.log("post Made to /api/profile");
 

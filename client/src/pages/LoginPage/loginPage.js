@@ -25,6 +25,13 @@ class LoginPage extends React.Component{
 
         API.validateLogin(this.state.credentials);
     }
+
+    createUser = (event) => {
+        event.preventDefault();
+        console.log(this.state.credentials);
+
+        API.createNewUser(this.state.credentials);
+    }
     
 
     // sampleLoad = () =>{
@@ -39,6 +46,7 @@ class LoginPage extends React.Component{
 			<div id="login-wrapper">
 				<h1 id="login-header">Welcome to Roomies!</h1>
                 <LoginPanel foo={this.handleInputChange}
+                newUser={this.createUser}
                 
                 
                 loginBtn={this.handleLoginClick} />

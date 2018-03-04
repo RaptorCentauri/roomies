@@ -13,6 +13,8 @@ class LoginPanel extends React.Component{
                         </div>
                         <div id="login-button-row">
                             <button onClick={this.props.loginBtn} type="submit">Login</button>
+                            <button onClick={this.props.newUser} type="submit">NEW USER</button>
+
                             {/* <button type="submit">Login</button> */}
                         </div>
                     </form>

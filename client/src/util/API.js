@@ -7,8 +7,18 @@ export default {
         console.log(`email: ${credentials.email}`);
         console.log(`pass: ${credentials.password}`);
     
-        return axios.post("/api/login", credentials);
+        return axios.post("/api/login", credentials).then((res) => console.log(res.data));
     },
+
+    createNewUser(credentials) {
+        console.log("Creating USER");
+        console.log(`email: ${credentials.email}`);
+        console.log(`pass: ${credentials.password}`);
+
+        return axios.post("/api/newacct", credentials).then((res) => console.log(res.data));
+    },
+
+    
 
     //Get profile
     getAll: function(){
