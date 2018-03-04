@@ -1,6 +1,8 @@
 // const UserDB = require("../models"), Sequelize = require('sequelize'), Op = Sequelize.Op;
 // const users = require("../controllers/login.js");
 const signup = require("../controllers/signup.js");
+const login = require("../controllers/login.js");
+
 // const jwt = require("jsonwebtoken");
 
 const db = require("../models");
@@ -13,23 +15,10 @@ module.exports = (app)=>{
 
 
     app.post("/api/login", function (req, res) {
-
+        validateUser(req.body.email, req.body.password);
         // console.log(req.body);
+        // console.log("Was pass good?: " + gogo);
         
-        db.accounts.findOne({
-            where:{
-                email:req.body.email,
-                password:req.body.password
-            }
-        }).then(function (dbMatches) {
-            if(!dbMatches){
-                console.log("NO SUCH USER");   
-            }
-            else{
-                console.log(dbMatches);
-            }
-        });
-
     })
 
 
