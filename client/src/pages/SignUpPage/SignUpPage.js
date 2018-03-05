@@ -38,15 +38,10 @@ class SignUpPage extends React.Component{
     };
 
 
-    // createUser = (e) => {
-    //     e.preventDefault();
-    //     API.createNewUser(this.state.account);
-    // }
-
-
     handleClick = (e) => {
         e.preventDefault();
 
+        //Click for account creation
         if (!this.state.accountWasMade) {
             if (!this.validate()) {
                 console.log("good");
@@ -55,42 +50,36 @@ class SignUpPage extends React.Component{
                         this.setState({ accountWasMade: true });
                     }
                 });
-
-                // this.setState({ accountWasMade: true });
             }
-            else {
-                console.log("bad")
-            } 
         }
+        //Click for profile creation
         else{
-
-
+            if (!this.validate()) {
+                console.log(this.state.profile);
+                //WE WILL SEND THE USER PROFILE TO THE DB
+            }
         }
-
     };
 
 
-toggleVisible = (e) => {
-    e.preventDefault()
-    if(this.state.passwordType === "password"){
-        this.setState({ passwordType: "text" });
-        this.setState({ toggleLabel: "HIDE" });
+    toggleVisible = (e) => {
+        e.preventDefault()
+        if(this.state.passwordType === "password"){
+            this.setState({ passwordType: "text" });
+            this.setState({ toggleLabel: "HIDE" });
+        }
+        else{
+            this.setState({ passwordType: "password" });
+            this.setState({ toggleLabel: "SHOW" });
+        }
     }
-    else{
-        this.setState({ passwordType: "password" });
-        this.setState({ toggleLabel: "SHOW" });
-    }
-
-
-}
 
 
 	validate = () => {
         let isError = false;
         
-//ERROR CHECK FOR ACCOUNT CREATION
+        //ERROR CHECK FOR ACCOUNT CREATION
         if (!this.state.accountWasMade) {
-
             let errors = {
                 emailError: "",
                 passwordError: ""
@@ -112,8 +101,7 @@ toggleVisible = (e) => {
             }
         }
 
-
-//ERROR CHECK FOR PROFILE CREATION
+        //ERROR CHECK FOR PROFILE CREATION
         else {
 
             let errors = {
