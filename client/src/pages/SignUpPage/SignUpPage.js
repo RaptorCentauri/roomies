@@ -7,15 +7,18 @@ import CreateAccountPanel from "../../components/createAccountPanel/createAccoun
 
 class SignUpPage extends React.Component{
     state = {
+        toggleLabel: "SHOW",
+        passwordType: "password",
         accountWasMade: false,
         account:{
             email: null,
             password: null,
-
+            repeatPassword: null
         },
         accountErrors:{
             emailError:null,
-            passwordError: null
+            passwordError: null,
+            repeatPasswordError: null,
         },
         profile: {
             firstName: null,
@@ -57,6 +60,21 @@ class SignUpPage extends React.Component{
     };
 
 
+toggleVisible = (e) => {
+    e.preventDefault()
+    if(this.state.passwordType === "password"){
+        this.setState({ passwordType: "text" });
+        this.setState({ toggleLabel: "HIDE" });
+    }
+    else{
+        this.setState({ passwordType: "password" });
+        this.setState({ toggleLabel: "SHOW" });
+    }
+
+
+}
+
+
 	validate = () => {
         let isError = false;
         
@@ -74,10 +92,21 @@ class SignUpPage extends React.Component{
                 errors.emailError = "Please enter an email";
             }
             //Check for password
-            if (!this.state.account.email) {
+            if (!this.state.account.password) {
                 isError = true;
                 errors.passwordError = "Please enter a password";
             }
+            // //Check for repaetPassword
+            // if (!this.state.account.repeatPassword) {
+            //     isError = true;
+            //     errors.repeatPasswordError = "Please re-enter a password";
+            // }
+
+
+            // if(this.state.account.password !== this.state.account.repeatPassword){
+            //     isError = true;
+            //     errors.passwordError = "Password Fields do not match"
+            // }
 
             if (isError) {
                 this.setState({ ...this.state.account, accountErrors: { ...this.state.accountErrors, ...errors } });
@@ -155,8 +184,15 @@ class SignUpPage extends React.Component{
     render(){
         return(
             <div>
-                {!this.state.accountWasMade ? <CreateAccountPanel createUser={this.handleClick} 
-                handleInputChange={this.handleInputChange}/> :
+                {!this.state.accountWasMade ? <CreateAccountPanel 
+                                                createUser={this.handleClick} 
+                                                handleInputChange={this.handleInputChange}
+                                        emailError={this.state.accountErrors.emailError}
+                                        passwordType={this.state.passwordType}
+                                        toggleVisible={this.toggleVisible}
+                                        toggleLabel={this.state.toggleLabel}
+                                        repeatPasswordError={this.state.accountErrors.repeatPasswordError}
+                                        passwordError={this.state.accountErrors.passwordError} /> :
 
                     <CreateProfilePanel clicky={this.handleClick}
                         firstNameError={this.state.profileErrors.firstNameError}
