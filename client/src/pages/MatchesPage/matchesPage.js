@@ -7,17 +7,14 @@ import "./matchesPage.css"
 
 class MatchesPage extends React.Component {
 
-		constructor(props){
-				super(props);
-				this.state = {
-                    tempData: [{ "firstname": "Greg", "rent": 500, "pets": "Dogs", "smokes": false, "bio": "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890" }, 
-						{ "firstname": "Jenny", "rent": 1200, "pets": "Cats", "smokes": true, "bio": "From the block"},
-							{ "firstname": "Scrooge", "rent": 1200, "pets": null, "smokes": false, "bio": "He's worth a gillion trillion!" }, { "firstname": "Greg", "rent": 500, "pets": "Dogs", "smokes": false, "bio": "greg is lonely, greg eats pretzels" },
-							{ "firstname": "Jenny", "rent": 1200, "pets": "Cats", "smokes": true, "bio": "From the block" },
-							{ "firstname": "Scrooge", "rent": 1200, "pets": null, "smokes": false, "bio": "He's worth a gillion trillion!" }]
-				}
-		}
-	 
+    state = {
+        tempData: [{ "firstname": "Greg", "rent": 500, "pets": "Dogs", "smokes": false, "bio": "012345678901234567890" }, 
+            { "firstname": "Jenny", "rent": 1200, "pets": "Cats", "smokes": true, "bio": "From the block"},
+                { "firstname": "Scrooge", "rent": 1200, "pets": null, "smokes": false, "bio": "He's worth a gillion trillion!" }, { "firstname": "Greg", "rent": 500, "pets": "Dogs", "smokes": false, "bio": "greg is lonely, greg eats pretzels" },
+                { "firstname": "Jenny", "rent": 1200, "pets": "Cats", "smokes": true, "bio": "From the block" },
+                { "firstname": "Scrooge", "rent": 1200, "pets": null, "smokes": false, "bio": "He's worth a gillion trillion!" }]
+    }
+
 
 
 		render() {

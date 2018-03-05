@@ -4,6 +4,20 @@ import "./searchPanel.css";
 
 class SearchPanel extends React.Component {
 
+
+    rentSelect = (gender) => {
+        let rent = [];
+        for (let i = 500; i <= 3000; i += 250) {
+            rent.push(i)
+        }
+        let rentOptions = rent.map(function (i) {
+           return <option value={i} > {gender === "both" ? "He or she" : gender === "man" ? "He" : "She"} can afford a rent of ${i}</option>
+            // return <option value={i} key={i}>I can afford a rent of ${i}</option>;
+        })
+        return <select name="rent" onChange={this.props.handleInputChange}>{rentOptions}</select>
+    }
+    
+
     render() {
         return (
             <div id="search-wrapper">
@@ -22,10 +36,9 @@ class SearchPanel extends React.Component {
                         <br/>
 
 						<select name="pets" onChange={this.props.handleInputChange}>
-                            <option value="all">It doesnt matter if {this.props.searchGender === "both" ? "he or she" : this.props.searchGender === "man" ? "he" : "she"} has pets</option>
-                            <option value="Cat">{this.props.searchGender === "both" ? "He or she" : this.props.searchGender === "man" ? "He" : "She"} only has cats</option>
-                            <option value="Dog">{this.props.searchGender === "both" ? "He or she" : this.props.searchGender === "man" ? "He" : "She"} only has dogs</option>
-                            <option value="other">{this.props.searchGender === "both" ? "He or she" : this.props.searchGender === "man" ? "He" : "She"} has pets, but they are not cats or dogs</option>
+                            <option value="both">It doesnt matter if {this.props.searchGender === "both" ? "he or she" : this.props.searchGender === "man" ? "he" : "she"} has pets</option>
+                            <option value="cat">{this.props.searchGender === "both" ? "He or she" : this.props.searchGender === "man" ? "He" : "She"} only has cats</option>
+                            <option value="dog">{this.props.searchGender === "both" ? "He or she" : this.props.searchGender === "man" ? "He" : "She"} only has dogs</option>
                             <option value="none">{this.props.searchGender === "both" ? "He or she" : this.props.searchGender === "man" ? "He" : "She"} has no pets</option>
                         </select>
 
@@ -38,13 +51,9 @@ class SearchPanel extends React.Component {
 
                         <br/>
 
-                    <select name="rent" onChange={this.props.handleInputChange}>
-                        <option value={1000} > {this.props.searchGender === "both" ? "He or she" : this.props.searchGender === "man" ? "He" : "She"} can afford a rent of $1000</option>
-                        <option value={2000} > {this.props.searchGender === "both" ? "He or she" : this.props.searchGender === "man" ? "He" : "She"} can afford a rent of $2000</option>
-                        <option value={3000} > {this.props.searchGender === "both" ? "He or she" : this.props.searchGender === "man" ? "He" : "She"} can afford a rent of $3000</option>
-                        <option value={4000} > {this.props.searchGender === "both" ? "He or she" : this.props.searchGender === "man" ? "He" : "She"} can afford a rent of $4000</option>
-                        <option value={5000} > {this.props.searchGender === "both" ? "He or she" : this.props.searchGender === "man" ? "He" : "She"} can afford a rent of $5000</option>
-					</select>
+
+                    {this.rentSelect(this.props.searchGender)}
+
 
                     <br/>
                     <br />

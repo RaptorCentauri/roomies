@@ -47,18 +47,7 @@ app.get("/api/matches", function(req,res){
     
     temp = JSON.parse(req.query.matchData);
     console.log(temp);
-
-        db.user.findAll({
-        where:{
-            gender: temp.gender, 
-            // pets: temp.pets,
-            // smokes: temp.smokes,
-            // rent: temp.rent
-        }
-    }).then(function(dbMatches){
-        res.json(dbMatches);
-    });
-
+        db.user.findAll({}).then((dbMatches)=>res.json(dbMatches));
 })
 
 
