@@ -17,7 +17,7 @@ module.exports = (app)=>{
 
 
     app.post("/api/newacct", function (req, res) {
-        createNewAccount(req.body.email, req.body.password);
+        createNewAccount(req.body.email, req.body.password).then((val) => res.json(val));
     });
 
 

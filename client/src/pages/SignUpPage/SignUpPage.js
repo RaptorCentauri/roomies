@@ -2,7 +2,7 @@ import React from "react"
 import CreateProfilePanel from "../../components/createProfilePanel/createProfilePanel.js"
 import CreateAccountPanel from "../../components/createAccountPanel/createAccountPanel.jsx"
 
-// import API from "../../util/API.js";
+import API from "../../util/API.js";
 // import Helpers from "../../util/Helpers.js";
 
 class SignUpPage extends React.Component{
@@ -13,7 +13,6 @@ class SignUpPage extends React.Component{
         account:{
             email: null,
             password: null,
-            repeatPassword: null
         },
         accountErrors:{
             emailError:null,
@@ -41,22 +40,29 @@ class SignUpPage extends React.Component{
 
     // createUser = (e) => {
     //     e.preventDefault();
-    //     API.createNewUser(this.state.credentials);
+    //     API.createNewUser(this.state.account);
     // }
 
 
     handleClick = (e) => {
         e.preventDefault();
 
-        if (!this.validate()){            
-            console.log("good");
-            this.setState({ accountWasMade: true });
+        if (!this.state.accountWasMade) {
+            if (!this.validate()) {
+                console.log("good");
+                API.createNewUser(this.state.account);
+
+                // this.setState({ accountWasMade: true });
+            }
+            else {
+                console.log("bad")
+            } 
         }
         else{
-            console.log("bad")
-        }  
-             
-        // this.setState({accountWasMade:true});
+
+
+        }
+
     };
 
 
@@ -96,17 +102,6 @@ toggleVisible = (e) => {
                 isError = true;
                 errors.passwordError = "Please enter a password";
             }
-            // //Check for repaetPassword
-            // if (!this.state.account.repeatPassword) {
-            //     isError = true;
-            //     errors.repeatPasswordError = "Please re-enter a password";
-            // }
-
-
-            // if(this.state.account.password !== this.state.account.repeatPassword){
-            //     isError = true;
-            //     errors.passwordError = "Password Fields do not match"
-            // }
 
             if (isError) {
                 this.setState({ ...this.state.account, accountErrors: { ...this.state.accountErrors, ...errors } });
@@ -171,15 +166,6 @@ toggleVisible = (e) => {
         }
     }
 
-
-    // handleClick = (e) => {
-	// 	e.preventDefault();
-		
-	// 	if (!this.validate()){            
-    //         API.setProfile(this.state.profile);
-    //         console.log(this.state.profile);
-    //     }    
-    // };
 
     render(){
         return(

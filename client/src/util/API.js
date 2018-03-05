@@ -13,3 +13,6 @@ export default {
     //Sets new user profile
     setProfile:(profileData) => axios.post("/api/profile", profileData)
 }
+
+
+// createNewUser: (credentials) => axios.post("/api/newacct", credentials).then((res) => console.log(res)),
