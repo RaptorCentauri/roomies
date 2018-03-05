@@ -1,5 +1,3 @@
-// const UserDB = require("../models"), Sequelize = require('sequelize'), Op = Sequelize.Op;
-// const users = require("../controllers/login.js");
 const signup = require("../controllers/signup.js");
 const login = require("../controllers/login.js");
 
@@ -11,66 +9,69 @@ const db = require("../models");
 
 module.exports = (app)=>{
 
+
+    //ROUTE FOR LOGIN
     app.post("/api/login", function (req, res) {
         validateUser(req.body.email, req.body.password).then((val) => res.json(val));
     })
 
 
+    //ROUTE FOR CREATING ACCOUNT
     app.post("/api/newacct", function (req, res) {
         createNewAccount(req.body.email, req.body.password).then((val) => res.json(val));
     });
 
 
+    //ROUTE FOR CREATING USER PROFILE
+    app.post("/api/profile", function (req, res) {
+        console.log("post Made to /api/profile");
 
-    app.post("/api/profile", function (req,res) {
+        let profile = req.body;
 
-    console.log("post Made to /api/profile");
+        console.log(profile);
 
-    let profile = req.body;
-
-    console.log(profile);
-
-    db.user.create({
-        firstName: profile.firstName,
-        lastName: profile.lastName,
-        // birthday: profile.birthday,
-        aboutMe: profile.bio,
-        gender: profile.gender,
-        pets: profile.pets,
-        smokes: profile.smokes,
-        rent: profile.rent
-    }).then(()=> console.log('GOOD ADD TO DB'));    
-})
-
-app.get("/api/matches", function(req,res){
-    console.log("request made to /api/matches");
-    
-    temp = JSON.parse(req.query.matchData);
-    console.log(temp);
-        db.user.findAll({}).then((dbMatches)=>res.json(dbMatches));
-})
+        db.user.create({
+            firstName: profile.firstName,
+            lastName: profile.lastName,
+            aboutMe: profile.bio,
+            gender: profile.gender,
+            pets: profile.pets,
+            smokes: profile.smokes,
+            rent: profile.rent
+        }).then(() => console.log('GOOD ADD TO DB'));
+    })
 
 
-// app.get("/", function(req,res){
-//     console.log("t accutaly workts (GET FUNVTION).");
-    
-//     res.render("../client/public/index.html");
-//     console.log("sending react Page");   
-// });
+    //ROUTE FOR GETING MATCHES
+    app.get("/api/matches", function (req, res) {
+        //WE SHOULD HAVE A FUNCTION THAT DETERMINES WHAT SEARCH PARAMATERS ARE SENT TO DB BASED ON THE OBJECT RECIEVED 
 
-// //Login BCrypt
-// app.post("/api/login", function(req, res) {
-//     console.log(req.body.email);
-//     users(req.body.email, req.body.password, cb, res);
-// });
+        console.log("request made to /api/matches");
 
-// //Signup BCrypt
-// app.post("/api/signup", function(req, res) {
-//     console.log(req.body.email);
-//     users(req.body.email, req.body.password, cb, res);
-// });
+        temp = JSON.parse(req.query.matchData);
+        console.log(temp);
+        db.user.findAll({}).then((dbMatches) => res.json(dbMatches));
+    })
+
+};
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+//EXTRA STUFF THAT MAY BE USEFUL LATER!!!!! KEPT OUTSIDE OF FUNCITON FOR EASIER READING
+//====================================================================
+//====================================================================
+//====================================================================
 // function cb(result, res, email){
 //     let token = false;
 
@@ -92,47 +93,6 @@ app.get("/api/matches", function(req,res){
 // }
 
 
-
-
-// //Login
-//   app.post("/api/login", (req, res)=>{
-//     db.User.findOne({
-//       where: {
-//         email: req.body.email,
-//         password: req.body.password
-//       }
-//     }).then((dbUser)=>{
-//       res.json(dbUser);
-//     });
-//   });
-
-// //Sign Up
-//   app.post("/api/signup", (req, res)=>{
-//     db.User.findOne({
-//       where: {
-//         email: req.body.email,
-//         password: req.body.password,
-//         firstName: req.body.firstName,
-//         lastName: req.body.lastName,
-//         birthday: req.body.birthday,
-//         gender: req.body.gender,
-//         rent: req.body.rent,
-//         smoking: req.body.smoking,
-//         pets: req.body.pets,
-//         about: req.body.about
-//       }
-//     }).then((dbUser)=>{
-//       if (!dbUser) {
-//     users(req.body.email, req.body.password, req.body.firstName, req.body.lastName, req.body.birthday, req.body.gender, req.body.rent, req.body.smoking, req.body.pets, req.body.about, cb, res);
-//       }
-//       else res.json(false);
-
-//       //Render AJAX adapter in React
-
-//     });
-//   });
-
-
 // //Current User
 //   app.post("/api/userId", (req, res)=>{
 //     db.User.findOne({
@@ -149,28 +109,8 @@ app.get("/api/matches", function(req,res){
 //       else res.json(false);
 //     });
 //   });
-
-// //Welcome Page
-//   app.post("/api/welcome", (req, res)=>{
-//     db.Welcome.create(req.body).then((dbWelcome)=>{
-
-//       res.json(dbWelcome);
-//     });
-//   });
-
-// //Search for Roomies
-//   app.post("/api/search", (req, res)=>{
-//     db.Search.create(req.body).then((dbSearch)=>{
-//       res.json(dbSearch);
-//     });
-//   });
-
-// //Results Page
-//   app.post("/api/results", (req, res)=>{
-//     db.Results.create(req.body).then((dbResults)=>{
-//       res.json(dbResults);
-//     });
-//   });
-
-};
-
+//====================================================================
+//====================================================================
+//====================================================================
+//====================================================================
+//====================================================================
