@@ -61,7 +61,6 @@ class SignUpPage extends React.Component{
         }
     };
 
-
     toggleVisible = (e) => {
         e.preventDefault()
         if(this.state.passwordType === "password"){
@@ -73,7 +72,6 @@ class SignUpPage extends React.Component{
             this.setState({ toggleLabel: "SHOW" });
         }
     }
-
 
 	validate = () => {
         let isError = false;
@@ -144,7 +142,6 @@ class SignUpPage extends React.Component{
 		return isError;
 	}
 
-
     handleInputChange = (e) =>{
         const target = e.target;
         const value = target.value;
@@ -157,7 +154,6 @@ class SignUpPage extends React.Component{
             this.setState({ profile: { ...this.state.profile, [name]: value } });
         }
     }
-
 
     render(){
         return(
