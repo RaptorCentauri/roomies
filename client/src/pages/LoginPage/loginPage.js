@@ -23,10 +23,10 @@ class LoginPage extends React.Component{
 		API.validateLogin(this.state.credentials)
     }
 
-    createUser = (e) => {
-        e.preventDefault();
-        API.createNewUser(this.state.credentials);
-    }
+    // createUser = (e) => {
+    //     e.preventDefault();
+    //     API.createNewUser(this.state.credentials);
+    // }
 
 	render(){
 		return(
