@@ -2,7 +2,15 @@ import axios from "axios";
 
 export default {
     //Allows us to add a new Account
-    createNewUser: (credentials) => axios.post("/api/newacct", credentials).then((res) => console.log(res.data)),
+    // createNewUser: (credentials) => axios.post("/api/newacct", credentials).then((res) => console.log(res.data)),
+
+
+    createNewUser: (credentials) => {
+        return new Promise((resolve, reject) => {
+            axios.post("/api/newacct", credentials).then((res) => res.data ? resolve(true) : reject(false))
+        })
+    },
+
     
     //Allows us to validate an email and password
     validateLogin: (credentials) => axios.post("/api/login", credentials).then((res) => console.log(res)),
@@ -16,3 +24,6 @@ export default {
 
 
 // createNewUser: (credentials) => axios.post("/api/newacct", credentials).then((res) => console.log(res)),
+
+
+

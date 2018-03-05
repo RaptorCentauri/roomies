@@ -50,7 +50,11 @@ class SignUpPage extends React.Component{
         if (!this.state.accountWasMade) {
             if (!this.validate()) {
                 console.log("good");
-                API.createNewUser(this.state.account);
+                API.createNewUser(this.state.account)
+                    .then((msg) => { if(msg){
+                        this.setState({ accountWasMade: true });
+                    }
+                });
 
                 // this.setState({ accountWasMade: true });
             }
