@@ -47,24 +47,18 @@ class SignUpPage extends React.Component{
 
         if (!this.validate()){            
             console.log("good");
+            this.setState({ accountWasMade: true });
         }
         else{
             console.log("bad")
         }  
              
-        this.setState({accountWasMade:true});
+        // this.setState({accountWasMade:true});
     };
 
 
 	validate = () => {
         let isError = false;
-        
-        // let errors = {
-        //     firstNameError: "",
-        //     lastNameError: "",
-        //     birthdayError: "",
-        //     bioError: "",
-        // };
         
 //ERROR CHECK FOR ACCOUNT CREATION
         if (!this.state.accountWasMade) {
