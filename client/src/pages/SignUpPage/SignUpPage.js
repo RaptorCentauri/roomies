@@ -10,7 +10,12 @@ class SignUpPage extends React.Component{
         accountWasMade: false,
         account:{
             email: null,
-            password: null
+            password: null,
+
+        },
+        accountErrors:{
+            emailError:null,
+            passwordError: null
         },
         profile: {
             firstName: null,
@@ -39,62 +44,93 @@ class SignUpPage extends React.Component{
 
     handleClick = (e) => {
         e.preventDefault();
+
+        if (!this.validate()){            
+            console.log("good");
+        }
+        else{
+            console.log("bad")
+        }  
              
         this.setState({accountWasMade:true});
     };
 
 
 	validate = () => {
-		let isError = false;
-
-		const errors = {
-			firstNameError: "",
-			lastNameError: "",
-            birthdayError: "",
-            bioError:"",
-		};
-
-        //Check for First Name Errors
-		if (!this.state.profile.firstName) {
-			isError = true;
-			errors.firstNameError = "Please enter you first name.";	
-		}
-		else if(this.state.profile.firstName.match(/\d/)){
-			isError = true;
-			errors.firstNameError = "First name cannot contain numbers.";	
-		}
-
-        //Check for Last Name Errors
-		if (!this.state.profile.lastName) {
-			isError = true;
-            errors.lastNameError = "Please enter you last name.";
-		}
-		else if (this.state.profile.lastName.match(/\d/)) {
-			isError = true;
-            errors.lastNameError = "Last name cannot contain numbers";
-        }
+        let isError = false;
         
-        //Check for Birthday Errors
-		// if (!this.state.profile.birthday) {
-		// 	isError = true;
-		// 	errors.birthdayError = "Please Enter a  Birthday";
-        // }
+        // let errors = {
+        //     firstNameError: "",
+        //     lastNameError: "",
+        //     birthdayError: "",
+        //     bioError: "",
+        // };
         
-		// else if (!this.state.profile.birthday.match(/[0-9]{2}\/[0-9]{2}\/[0-9]{4}/)) {
-		// 	isError = true;
-		// 	console.log("bday error");
-		// 	errors.birthdayError = "Wrong Bday format";
-        // }
-        
-        if (!this.state.profile.bio) {
-            isError = true;
-            errors.bioError = "A short bio is required";
+//ERROR CHECK FOR ACCOUNT CREATION
+        if (!this.state.accountWasMade) {
+
+            let errors = {
+                emailError: "",
+                passwordError: ""
+            };
+
+            //Check for email
+            if (!this.state.account.email) {
+                isError = true;
+                errors.emailError = "Please enter an email";
+            }
+            //Check for password
+            if (!this.state.account.email) {
+                isError = true;
+                errors.passwordError = "Please enter a password";
+            }
+
+            if (isError) {
+                this.setState({ ...this.state.account, accountErrors: { ...this.state.accountErrors, ...errors } });
+            }
         }
 
 
-		if (isError){
-			this.setState({ ...this.state.profile, profileErrors: { ...this.state.profileErrors, ...errors } });
-		}
+//ERROR CHECK FOR PROFILE CREATION
+        else {
+
+            let errors = {
+                firstNameError: "",
+                lastNameError: "",
+                birthdayError: "",
+                bioError: "",
+            };
+
+            //Check for First Name Errors
+            if (!this.state.profile.firstName) {
+                isError = true;
+                errors.firstNameError = "Please enter you first name.";
+            }
+            else if (this.state.profile.firstName.match(/\d/)) {
+                isError = true;
+                errors.firstNameError = "First name cannot contain numbers.";
+            }
+
+            //Check for Last Name Errors
+            if (!this.state.profile.lastName) {
+                isError = true;
+                errors.lastNameError = "Please enter you last name.";
+            }
+            else if (this.state.profile.lastName.match(/\d/)) {
+                isError = true;
+                errors.lastNameError = "Last name cannot contain numbers";
+            }
+
+            if (!this.state.profile.bio) {
+                isError = true;
+                errors.bioError = "A short bio is required";
+            }
+
+            if (isError) {
+                this.setState({ ...this.state.profile, profileErrors: { ...this.state.profileErrors, ...errors } });
+            }
+        }
+
 		return isError;
 	}
 
@@ -136,22 +172,6 @@ class SignUpPage extends React.Component{
                         handleInputChange={this.handleInputChange} />
             }
             </div>
-
-
-
-
-
-
-
-            // <CreateAccountPanel />
-
-
-			// <CreateProfilePanel clicky={this.handleClick}
-			// firstNameError={this.state.profileErrors.firstNameError}
-			// lastNameError={this.state.profileErrors.lastNameError}
-            // birthdayError={this.state.profileErrors.birthdayError} 
-            // bioError={this.state.profileErrors.bioError} 
-			// handleInputChange={this.handleInputChange} />
         )
     }
 }
