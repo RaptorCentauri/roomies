@@ -11,9 +11,6 @@ const db = require("../models");
 
 module.exports = (app)=>{
 
-
-
-
     app.post("/api/login", function (req, res) {
         validateUser(req.body.email, req.body.password).then((val) => res.json(val));
     })
