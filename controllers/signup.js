@@ -14,7 +14,7 @@ createNewAccount = (email, password) => {
             db.accounts.create({
                 email: newAccount.email,
                 password: newAccount.password
-            }).then(() => resolve(true));
+            }).then((data) => resolve(true));
         })
     })
 }
