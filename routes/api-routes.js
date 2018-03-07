@@ -70,7 +70,7 @@ module.exports = (app)=>{
       }
       else res.json(false);
     });*/
-  });
+//   });
 
 //UPDATING THE NEW DATABASE? RR
 // app.PUT("/api/updateDB/:userId"), (res,res) => {
