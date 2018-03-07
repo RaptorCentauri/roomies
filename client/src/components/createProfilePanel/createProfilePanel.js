@@ -3,7 +3,6 @@ import "../../styles/universalStyles.css"
 import "./createProfilePanel.css";
 
 class CreateProfilePanel extends React.Component{
-
     rentSelect = () => {
         let rent = [];
         for(let i=500; i<=3000; i+=250){
@@ -15,13 +14,11 @@ class CreateProfilePanel extends React.Component{
         return <select name="rent" onChange={this.props.handleInputChange}>{rentOptions}</select>
     }
 
-
 	render(){
 		return(
 			<div id="profile-wrapper">
 				<form action="" method="">
                     <div className="field-wrapper">
-
                         <h1>NEED TO ADD USER_AVATAR</h1>
                         <br/>
 
@@ -31,14 +28,10 @@ class CreateProfilePanel extends React.Component{
                         <input className="input-style" onChange={this.props.handleInputChange} type="text" name="lastName" placeholder="Last Name" />
                         <h6 className="error-style">{this.props.lastNameError}</h6>
 
-                        {/* <input className="input-style" onChange={this.props.handleInputChange} type="date" name="birthday" placeholder="MM-DD-YYYY" pattern="[0-9]{2}" /> */}
-                        {/* <h6 className="error-style">{this.props.birthdayError}</h6> */}
-
                         <textarea className="input-style" onChange={this.props.handleInputChange} placeholder="Make yourself stand out..." name="bio" rows="5"></textarea>
                         <h6 className="error-style">{this.props.bioError}</h6>
                     </div>
     
-		
  						<select name="gender" onChange={this.props.handleInputChange}>
                             <option value="man">I am a man</option>
  							<option value="woman">I am a woman</option>
@@ -54,7 +47,6 @@ class CreateProfilePanel extends React.Component{
 						</select>
 
                     <br />
-
 
                         <select name="smokes" onChange={this.props.handleInputChange}>
                             <option value={false}>I am not a smoker</option>

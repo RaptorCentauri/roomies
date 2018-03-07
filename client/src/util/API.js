@@ -5,15 +5,24 @@ export default {
     // createNewUser: (credentials) => axios.post("/api/newacct", credentials).then((res) => console.log(res.data)),
 
 
-    createNewUser: (credentials) => {
+    createNewUser: (credentials) => {        
         return new Promise((resolve, reject) => {
-            axios.post("/api/newacct", credentials).then((res) => res.data ? resolve(true) : reject(false))
+            axios.post("/api/newacct", credentials).then((res) => res.data ? resolve(true) : resolve(false))
         })
     },
 
+
+
+    validateLogin: (credentials) => {
+        console.log(credentials)
+        
+        return new Promise((resolve, reject) => {
+            axios.post("/api/login", credentials).then((res) => res.data ? resolve(true) : resolve(false))
+        })
+    },
     
     //Allows us to validate an email and password
-    validateLogin: (credentials) => axios.post("/api/login", credentials).then((res) => console.log(res)),
+    // validateLogin: (credentials) => axios.post("/api/login", credentials).then((res) => res.data ? resolve(true) : resolve(false)),
  
     //Returns an array JSON objects of users from the DB that match the search parameters
     getMatches: (matchData) => axios.get("/api/matches", {params:{matchData}}).then((res) => console.log(res.data)),
@@ -27,3 +36,8 @@ export default {
 
 
 
+// validateLogin: (credentials) => {
+//     return new Promise((resolve, reject) => {
+//         axios.post("/api/login", credentials).then((res) => res.data ? resolve(true) : resolve(false)),
+//     })
+// },

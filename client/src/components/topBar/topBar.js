@@ -1,17 +1,12 @@
 import React from "react";
 import "./topBar.css"
 
-class Topbar extends React.Component{
-render(){
-    return(
+const Topbar = (props) => {
+    return (
         <div id="topbar-wrapper">
-            <p>Here will be a natural language representation of the User Search parameters, with each paramter in a dropdown that can be changed</p>
+            <h2>Showing {props.gender == "both" ? "men and women" : props.gender == "man" ? "man" : "woman"}</h2>
         </div>
-    )    
-
-}
-
-
+    )
 }
 
 export default Topbar;
