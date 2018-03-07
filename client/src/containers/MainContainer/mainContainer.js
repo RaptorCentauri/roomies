@@ -7,14 +7,15 @@ import "./mainContainer.css"
 import API from "../../util/API.js";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { changeCredentials, changeUserIsLoggedIn, changeAccountWasCreated} from "../../actions/index.js"
+import { changeCredentials, changeUserIsLoggedIn, changeAccountWasCreated, changeCreateNewUser} from "../../actions/index.js"
 
 
 let mapStateToProps = (state) => {
     return {
         credentials: state.credentials,
         userIsLoggedIn: state.userIsLoggedIn,
-        accountWasCreated: state.accountWasCreated
+        accountWasCreated: state.accountWasCreated,
+        createNewUser: state.createNewUser
     };
 }
 
@@ -22,7 +23,8 @@ let matchDispatchtoProps = (dispatch) => {
     return bindActionCreators({ 
         changeCredentials: changeCredentials, 
         changeUserIsLoggedIn: changeUserIsLoggedIn,
-        changeAccountWasCreated: changeAccountWasCreated
+        changeAccountWasCreated: changeAccountWasCreated,
+        changeCreateNewUser: changeCreateNewUser
 
      }, dispatch)
 }
@@ -74,7 +76,7 @@ class MainContainer extends React.Component{
 
     handleSignUpClick = (e) => {
         e.preventDefault();
-        this.props.changeUserIsLoggedIn(true);
+        this.props.changeCreateNewUser(true);
     }
     
 
@@ -86,7 +88,7 @@ class MainContainer extends React.Component{
             // <div>{!this.props.userIsLoggedIn.success ? this.loginPanelIsVisible() :  this.matchesContainerIsVisible()}</div>
 
 
-            <div>{!this.props.userIsLoggedIn.success ? this.loginPanelIsVisible() : !this.props.accountWasCreated.success ? this.signUpContainerIsVisible() : this.matchesContainerIsVisible()}</div>
+            <div>{!this.props.userIsLoggedIn.success || !this.props.createNewUser.success ? this.loginPanelIsVisible() : !this.props.accountWasCreated.success ? this.signUpContainerIsVisible() : this.matchesContainerIsVisible()}</div>
 		)
 	}
 }

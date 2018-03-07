@@ -9,6 +9,7 @@ import ProfileErrors from "./profileErrorsReducer";
 import AccountWasCreated from "./accountWasCreated";
 import ProfileWasCompleted from "./profileWasCompleted.js";
 import UserIsLoggedIn from "./userIsLoggedIn.js";
+import CreateNewUser from "./createNewUser.js";
 
 
 const allReducers = combineReducers({
@@ -21,7 +22,8 @@ const allReducers = combineReducers({
     profileErrors: ProfileErrors,
     accountWasCreated: AccountWasCreated,
     profileWasCompleted: ProfileWasCompleted,
-    userIsLoggedIn: UserIsLoggedIn
+    userIsLoggedIn: UserIsLoggedIn,
+    createNewUser:CreateNewUser
 
 });
 

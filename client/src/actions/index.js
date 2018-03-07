@@ -73,3 +73,10 @@ export const changeUserIsLoggedIn = (bool) => {
         payload: bool
     }
 };
+
+export const changeCreateNewUser = (bool) => {
+    return {
+        type: "CREATE_USER_WAS_CLICKED",
+        payload: bool
+    }
+};
