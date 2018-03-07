@@ -55,13 +55,13 @@ module.exports = (app)=>{
 
 
 //FINDING A CURRENT USER? RR
-  app.GET("/api/:userId", (req, res)=>{
-    db.roommates.findOne({
-      where: {
-        userId: req.params.userId
-      }
-    })
-    .then(() => console.log(res));
+//   app.GET("/api/:userId", (req, res)=>{
+//     db.roommates.findOne({
+//       where: {
+//         userId: req.params.userId
+//       }
+//     })
+//     .then(() => console.log(res));
 /*    .then((dbUser)=>{
       if (!dbUser) {
         db.User.create(req.body).then((dbUser)=>{
