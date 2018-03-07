@@ -41,6 +41,8 @@ let matchDispatchtoProps = (dispatch) => {
 class SignUpPage extends React.Component{
 
 
+
+
     //============================================================================
     // This Container conditially renders components based on state. 
     // We wrap each compnonet in a function, and the call said function when we
@@ -66,6 +68,7 @@ class SignUpPage extends React.Component{
                 birthdayError={this.props.profileErrors.birthdayError}
                 bioError={this.props.profileErrors.bioError}
                 handleInputChange={this.handleInputChange}
+                uploadClick={this.uploadClick}
             />
         )
     }
@@ -76,6 +79,18 @@ class SignUpPage extends React.Component{
         )
     }
 
+
+    uploadClick = (e) =>{
+     
+        console.log(e.target.files[0].name)    
+        console.log(e.target.files[0]);
+        console.log(e.target.files);
+
+            
+        
+         
+
+    }
 
     //Event Listeners
     handleClick = (e) => {

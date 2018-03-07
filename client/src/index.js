@@ -3,14 +3,11 @@ import { createStore } from 'redux';
 import allReducers from "./reducers";
 import {Provider} from 'react-redux';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
-
+import './index.css';
 
 const store = createStore(allReducers);
 
-
-store.subscribe(()=>console.log("Store Updated", store.getState()))
-
+// store.subscribe(()=>console.log("Store Updated", store.getState()))
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));

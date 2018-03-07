@@ -19,6 +19,9 @@ class CreateProfilePanel extends React.Component{
 			<div id="profile-wrapper">
 				<form action="" method="">
                     <div className="field-wrapper">
+
+                        <input type="file" onChange={this.props.uploadClick} name="imageUpload" id="" accept="image/*"/>
+                        
                         <h1>NEED TO ADD USER_AVATAR</h1>
                         <br/>
 
