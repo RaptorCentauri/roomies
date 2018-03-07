@@ -73,15 +73,15 @@ module.exports = (app)=>{
   });
 
 //UPDATING THE NEW DATABASE? RR
-app.PUT("/api/updateDB/:userId"), (res,res) => {
+// app.PUT("/api/updateDB/:userId"), (res,res) => {
 
-    db.User.update ({
-        added: true
-    },
-        where: {
-        userId: req.params.userId
-      }
-    ).then(() => console.log(res));
+//     db.User.update ({
+//         added: true
+//     },
+//         where: {
+//         userId: req.params.userId
+//       }
+//     ).then(() => console.log(res));
     /*    .then((dbUser)=>{
       if (!dbUser) {
         db.User.create(req.body).then((dbUser)=>{
@@ -90,7 +90,7 @@ app.PUT("/api/updateDB/:userId"), (res,res) => {
       }
       else res.json(false);
     });*/
-}
+// }
 
 
 
