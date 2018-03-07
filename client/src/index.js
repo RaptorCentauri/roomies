@@ -8,6 +8,6 @@ import './index.css';
 
 const store = createStore(allReducers);
 
-// store.subscribe(()=>console.log("Store Updated", store.getState()))
+store.subscribe(()=>console.log("Store Updated", store.getState()))
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));

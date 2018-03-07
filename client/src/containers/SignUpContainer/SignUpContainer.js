@@ -5,7 +5,7 @@ import SearchPanel from "../../components/searchPanel/searchPanel.js"
 import API from "../../util/API.js";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { changeProfile, changeProfileErrors, changeNewAccount, changeNewAccountErrors, changeAccountWasCreated, changeProfileWasCompleted, changeSearchParams } from "../../actions/index.js"
+import { changeProfile, changeProfileErrors, changeNewAccount, changeNewAccountErrors, changeAccountWasCreated, changeProfileWasCompleted, changeSearchParams, changeUserIsLoggedIn } from "../../actions/index.js"
 
 //IMPORTANT FOR REDUX=======================================================
 //============================================================================
@@ -23,16 +23,7 @@ let mapStateToProps = (state) => {
 }
 
 let matchDispatchtoProps = (dispatch) => {
-    return bindActionCreators({ 
-        changeProfile: changeProfile, 
-        changeProfileErrors: changeProfileErrors,
-        changeNewAccount: changeNewAccount,
-        changeNewAccountErrors: changeNewAccountErrors,
-        changeAccountWasCreated: changeAccountWasCreated,
-        changeProfileWasCompleted: changeProfileWasCompleted,
-        changeSearchParams: changeSearchParams
-
-    }, dispatch)
+    return bindActionCreators({changeProfile, changeProfileErrors, changeNewAccount, changeNewAccountErrors, changeAccountWasCreated, changeProfileWasCompleted, changeSearchParams,changeUserIsLoggedIn}, dispatch)
 }
 //============================================================================
 //============================================================================
@@ -40,20 +31,18 @@ let matchDispatchtoProps = (dispatch) => {
 
 class SignUpPage extends React.Component{
 
-
-
-
     //============================================================================
     // This Container conditially renders components based on state. 
     // We wrap each compnonet in a function, and the call said function when we
     // need to render the component. Doing this allows us to keep a much cleaner 
     // retrun statement for our Class
     //============================================================================
+
     createAccountIsVisible = () => {
         return (
             <CreateAccountPanel
                 handleClick={this.handleClick}
-                handleInputChange={this.handleInputChange}
+                handleInputChange={this.handleInputChangeForCreateAccount}
                 emailError={this.props.newAccountErrors.emailError}
                 passwordError={this.props.newAccountErrors.passwordError}
             />
@@ -67,7 +56,7 @@ class SignUpPage extends React.Component{
                 lastNameError={this.props.profileErrors.lastNameError}
                 birthdayError={this.props.profileErrors.birthdayError}
                 bioError={this.props.profileErrors.bioError}
-                handleInputChange={this.handleInputChange}
+                handleInputChange={this.handleInputChangeForProfile}
                 uploadClick={this.uploadClick}
             />
         )
@@ -75,21 +64,15 @@ class SignUpPage extends React.Component{
 
     searchPanelIsVisible = () => {
         return(
-            <SearchPanel clickBtn={this.testClick} gender={this.props.searchParams.gender} handleInputChange={this.handleInputChange}/>
+            <SearchPanel clickBtn={this.testClick} gender={this.props.searchParams.gender} handleInputChange={this.handleInputChangeForSearch}/>
         )
     }
 
 
     uploadClick = (e) =>{
-     
         console.log(e.target.files[0].name)    
         console.log(e.target.files[0]);
         console.log(e.target.files);
-
-            
-        
-         
-
     }
 
     //Event Listeners
@@ -99,8 +82,9 @@ class SignUpPage extends React.Component{
         if (!this.props.accountWasCreated.success) {
             if (!this.validate()) {
                 API.createNewUser(this.props.newAccount)
-                    .then((res) => { if(res){
+                    .then((res) => { if(res.success){
                         this.props.changeAccountWasCreated(true)
+                        this.props.changeUserIsLoggedIn(res.id, res.success)
                     }
                 });
             }
@@ -108,6 +92,7 @@ class SignUpPage extends React.Component{
         // Click for profile creation
         else if(!this.props.profileWasCompleted.success){
             if (!this.validate()) {
+                API.setProfile(this.props.profile);
                 //WE WILL SEND THE USER PROFILE TO THE DB and call the next function upon success
                 this.props.changeProfileWasCompleted(true)
             }
@@ -118,12 +103,29 @@ class SignUpPage extends React.Component{
         }
     };
 
-    handleInputChange = (e) => {
+    handleInputChangeForCreateAccount = (e) => {
         const target = e.target;
         const value = target.value;
         const name = target.name;
 
-        !this.props.accountWasCreated.success ? this.props.changeNewAccount(name, value) : !this.props.profileWasCompleted.success ? this.props.changeProfile(name, value) : this.props.changeSearchParams(name, value)
+        this.props.changeNewAccount(name, value)
+    }
+
+
+    handleInputChangeForProfile = (e) => {
+        const target = e.target;
+        const value = target.value;
+        const name = target.name;
+
+       this.props.changeProfile(name, value)
+    }
+
+    handleInputChangeForSearch = (e) => {
+        const target = e.target;
+        const value = target.value;
+        const name = target.name;
+
+       this.props.changeSearchParams(name, value)
     }
 
 

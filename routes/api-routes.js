@@ -18,19 +18,19 @@ module.exports = (app)=>{
 
     //ROUTE FOR CREATING ACCOUNT
     app.post("/api/newacct", function (req, res) {
-        createNewAccount(req.body.email, req.body.password).then((val) => res.json(val));
+        createNewAccount(req.body.email, req.body.password).then((val) => res.json({id: val, success: true}));
     });
 
 
     //ROUTE FOR CREATING USER PROFILE
     app.post("/api/profile", function (req, res) {
-        console.log("post Made to /api/profile");
+        // db.profile.findByID().then((res => console.log(res)))
 
         let profile = req.body;
 
         console.log(profile);
 
-        db.user.create({
+        db.profile.update({
             firstName: profile.firstName,
             lastName: profile.lastName,
             aboutMe: profile.bio,
@@ -50,7 +50,7 @@ module.exports = (app)=>{
 
         temp = JSON.parse(req.query.matchData);
         console.log(temp);
-        db.user.findAll({}).then((dbMatches) => res.json(dbMatches));
+        db.profile.findAll({}).then((dbMatches) => res.json(dbMatches));
     })
 
 

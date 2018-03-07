@@ -11,10 +11,10 @@ createNewAccount = (email, password) => {
         bcrypt.hash(password, 5).then((hash) => {
             newAccount.password = hash;
 
-            db.accounts.create({
+            db.profile.create({
                 email: newAccount.email,
                 password: newAccount.password
-            }).then((data) => resolve(true));
+            }).then((data) => resolve(data.id));
         })
     })
 }

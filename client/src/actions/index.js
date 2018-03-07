@@ -13,7 +13,6 @@ export const changeCredentials = (name, value) => {
     }
 };
 
-
 export const changeMatches = (name, value) => {
     return {
         // type: "LOGIN_VALUES_ENTERED",
@@ -66,10 +65,10 @@ export const changeProfileWasCompleted = (bool) => {
     }
 };
 
-export const changeUserIsLoggedIn = (bool) => {
+export const changeUserIsLoggedIn = (id, bool) => {
     return {
         type: "USER_LOGGED_IN",
-        payload: bool
+        payload: {id: id, success: bool}
     }
 };
 

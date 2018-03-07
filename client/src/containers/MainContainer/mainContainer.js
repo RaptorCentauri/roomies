@@ -19,14 +19,8 @@ let mapStateToProps = (state) => {
     };
 }
 
-let matchDispatchtoProps = (dispatch) => {
-    return bindActionCreators({ 
-        changeCredentials: changeCredentials, 
-        changeUserIsLoggedIn: changeUserIsLoggedIn,
-        changeAccountWasCreated: changeAccountWasCreated,
-        changeCreateNewUser: changeCreateNewUser
-
-     }, dispatch)
+const matchDispatchtoProps = (dispatch) => {
+    return bindActionCreators({changeCredentials, changeUserIsLoggedIn, changeAccountWasCreated, changeCreateNewUser}, dispatch)
 }
 
 
@@ -47,8 +41,8 @@ class MainContainer extends React.Component{
             
         API.validateLogin(this.props.credentials)
             .then((res) => {                
-                if (res) {
-                    this.props.changeUserIsLoggedIn(true)
+                if (res.success) {
+                    this.props.changeUserIsLoggedIn(res.id, res.success)
                     this.props.changeAccountWasCreated(true)
                 }
             });

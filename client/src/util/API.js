@@ -7,7 +7,7 @@ export default {
 
     createNewUser: (credentials) => {        
         return new Promise((resolve, reject) => {
-            axios.post("/api/newacct", credentials).then((res) => res.data ? resolve(true) : resolve(false))
+            axios.post("/api/newacct", credentials).then((res) => res.data ? resolve(res.data)  : resolve(false))
         })
     },
 
@@ -17,7 +17,7 @@ export default {
         console.log(credentials)
         
         return new Promise((resolve, reject) => {
-            axios.post("/api/login", credentials).then((res) => res.data ? resolve(true) : resolve(false))
+            axios.post("/api/login", credentials).then((res) => res.data ? resolve(res.data) : resolve(false))
         })
     },
     

@@ -32,6 +32,6 @@ app.get('*', function (request, response) {
 //     response.sendFile(__dirname, 'index.html')
 // })
 
-db.sequelize.sync().then(function () {
+db.sequelize.sync({}).then(function () {
     app.listen(port, () => console.log(`Listening on port ${port}`));
 });
