@@ -15,7 +15,9 @@ let mapStateToProps = (state) => {
         credentials: state.credentials,
         userIsLoggedIn: state.userIsLoggedIn,
         accountWasCreated: state.accountWasCreated,
-        createNewUser: state.createNewUser
+        createNewUser: state.createNewUser,
+        profileWasComnpleted: state.profileWasCompleted
+        
     };
 }
 
@@ -48,7 +50,6 @@ class MainContainer extends React.Component{
             });
     }
 
-
     handleSignUpClick = (e) => {
         e.preventDefault();
         this.props.changeCreateNewUser(true);
@@ -67,7 +68,7 @@ class MainContainer extends React.Component{
                renderedComponent = <SignUpContainer />
         }
 
-        if(this.props.userIsLoggedIn.success){
+        if(this.props.userIsLoggedIn.success && this.props.profileWasComnpleted.success){
               renderedComponent = <MatchesContainer />
         }
         

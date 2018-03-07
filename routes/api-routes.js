@@ -1,5 +1,6 @@
 const signup = require("../controllers/signup.js");
 const login = require("../controllers/login.js");
+const updateUserProfile = require("../controllers/updateUserProfile.js")
 
 // const jwt = require("jsonwebtoken");
 
@@ -24,21 +25,10 @@ module.exports = (app)=>{
 
     //ROUTE FOR CREATING USER PROFILE
     app.post("/api/profile", function (req, res) {
-        // db.profile.findByID().then((res => console.log(res)))
+        let profileData = req.body.profile;
+        let id = req.body.id;
 
-        let profile = req.body;
-
-        console.log(profile);
-
-        db.profile.update({
-            firstName: profile.firstName,
-            lastName: profile.lastName,
-            aboutMe: profile.bio,
-            gender: profile.gender,
-            pets: profile.pets,
-            smokes: profile.smokes,
-            rent: profile.rent
-        }).then(() => console.log('GOOD ADD TO DB'));
+        updateUserProfile(profileData, id).then((val)=> res.json(val));
     })
 
 

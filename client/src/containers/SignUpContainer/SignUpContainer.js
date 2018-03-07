@@ -18,12 +18,13 @@ let mapStateToProps = (state) => {
         newAccountErrors: state.newAccountErrors,
         accountWasCreated: state.accountWasCreated,
         searchParams: state.searchParams,
-        profileWasCompleted: state.profileWasCompleted
+        profileWasCompleted: state.profileWasCompleted,
+        userIsLoggedIn: state.userIsLoggedIn
     };
 }
 
 let matchDispatchtoProps = (dispatch) => {
-    return bindActionCreators({changeProfile, changeProfileErrors, changeNewAccount, changeNewAccountErrors, changeAccountWasCreated, changeProfileWasCompleted, changeSearchParams,changeUserIsLoggedIn}, dispatch)
+    return bindActionCreators({changeProfile, changeProfileErrors, changeNewAccount, changeNewAccountErrors, changeAccountWasCreated, changeProfileWasCompleted, changeSearchParams, changeUserIsLoggedIn}, dispatch)
 }
 //============================================================================
 //============================================================================
@@ -76,11 +77,34 @@ class SignUpPage extends React.Component{
     // }
 
     //Event Listeners
+
+    handleClickForNewAccount = () => {
+        API.createNewUser(this.props.newAccount)
+            .then((res) => {
+                if (res.success) {
+                    this.props.changeAccountWasCreated(true)
+                    this.props.changeUserIsLoggedIn(res.id, res.success)
+                }
+            });
+    }
+
+    handleClickForCreateProfile = () =>{
+
+    }
+
+    handleClickForSearch = () => {
+
+    }
+
+
+
+
+
     handleClick = (e) => {
         e.preventDefault();
 
         if (!this.props.accountWasCreated.success) {
-            if (!this.validate()) {
+            if (!this.validateNewAccount()) {
                 API.createNewUser(this.props.newAccount)
                     .then((res) => { if(res.success){
                         this.props.changeAccountWasCreated(true)
@@ -91,8 +115,16 @@ class SignUpPage extends React.Component{
         }
         // Click for profile creation
         else if(!this.props.profileWasCompleted.success){
-            if (!this.validate()) {
-                API.setProfile(this.props.profile);
+            if (!this.validateProfile()) {
+                console.log(this.props.profile); 
+                console.log(this.props.userIsLoggedIn.id);
+                
+                let profileToUpdate = {
+                    profile: this.props.profile,
+                    id: this.props.userIsLoggedIn.id
+                }
+                
+                API.setProfile(profileToUpdate);
                 //WE WILL SEND THE USER PROFILE TO THE DB and call the next function upon success
                 this.props.changeProfileWasCompleted(true)
             }
@@ -196,12 +228,24 @@ class SignUpPage extends React.Component{
         }
 
         return isError;
-
-
-
-
     }
 
+
+
+    // componentToRender = () => {
+    //     let renderedComponent;
+
+    //     if(!this.props.accountWasCreated.success){
+    //         this.createAccountIsVisible()
+    //     }
+
+    //     if()
+
+
+
+
+    //     return renderedComponent;
+    // }
 
 
     //Validators
