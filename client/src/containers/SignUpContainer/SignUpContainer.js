@@ -69,11 +69,11 @@ class SignUpPage extends React.Component{
     }
 
 
-    uploadClick = (e) =>{
-        console.log(e.target.files[0].name)    
-        console.log(e.target.files[0]);
-        console.log(e.target.files);
-    }
+    // uploadClick = (e) =>{
+    //     console.log(e.target.files[0].name)    
+    //     console.log(e.target.files[0]);
+    //     console.log(e.target.files);
+    // }
 
     //Event Listeners
     handleClick = (e) => {
@@ -129,76 +129,83 @@ class SignUpPage extends React.Component{
     }
 
 
-    //Validators
-    validate = () => {
+    validateNewAccount = () => {
         let isError = false;
 
-        //ERROR CHECK FOR ACCOUNT CREATION
-        if (!this.props.accountWasCreated.success) {
-            let errors = {
-                emailError: "",
-                passwordError: ""
-            };
+        let errors = {
+            emailError: "",
+            passwordError: ""
+        };
 
-            //Check for email
-            if (!this.props.newAccount.email) {
-                isError = true;
-                errors.emailError = "Please enter an email";
-            }
-            //Check for password
-            if (!this.props.newAccount.password) {
-                isError = true;
-                errors.passwordError = "Please enter a password";
-            }
-
-            if (isError) {
-                this.props.changeNewAccountErrors(errors)
-            }
+        //Check for email
+        if (!this.props.newAccount.email) {
+            isError = true;
+            errors.emailError = "Please enter an email";
+        }
+        //Check for password
+        if (!this.props.newAccount.password) {
+            isError = true;
+            errors.passwordError = "Please enter a password";
         }
 
-        //ERROR CHECK FOR PROFILE CREATION
-        else {
-
-            let errors = {
-                firstNameError: "",
-                lastNameError: "",
-                birthdayError: "",
-                bioError: "",
-            };
-
-            //Check for First Name Errors
-            if (!this.props.profile.firstName) {
-                isError = true;
-                errors.firstNameError = "Please enter you first name.";
-            }
-            else if (this.props.profile.firstName.match(/\d/)) {
-                isError = true;
-                errors.firstNameError = "First name cannot contain numbers.";
-            }
-
-            //Check for Last Name Errors
-            if (!this.props.profile.lastName) {
-                isError = true;
-                errors.lastNameError = "Please enter you last name.";
-            }
-            else if (this.props.profile.lastName.match(/\d/)) {
-                isError = true;
-                errors.lastNameError = "Last name cannot contain numbers";
-            }
-
-            if (!this.props.profile.bio) {
-                isError = true;
-                errors.bioError = "A short bio is required";
-            }
-
-            if (isError) {
-                this.props.changeProfileErrors(errors)
-            }
+        if (isError) {
+            this.props.changeNewAccountErrors(errors)
         }
-
+    
         return isError;
     }
 
+
+    validateProfile = () => {
+        let isError = false;
+
+        let errors = {
+            firstNameError: "",
+            lastNameError: "",
+            birthdayError: "",
+            bioError: "",
+        };
+
+        //Check for First Name Errors
+        if (!this.props.profile.firstName) {
+            isError = true;
+            errors.firstNameError = "Please enter you first name.";
+        }
+        else if (this.props.profile.firstName.match(/\d/)) {
+            isError = true;
+            errors.firstNameError = "First name cannot contain numbers.";
+        }
+
+        //Check for Last Name Errors
+        if (!this.props.profile.lastName) {
+            isError = true;
+            errors.lastNameError = "Please enter you last name.";
+        }
+        else if (this.props.profile.lastName.match(/\d/)) {
+            isError = true;
+            errors.lastNameError = "Last name cannot contain numbers";
+        }
+
+        if (!this.props.profile.bio) {
+            isError = true;
+            errors.bioError = "A short bio is required";
+        }
+
+        if (isError) {
+            this.props.changeProfileErrors(errors)
+        }
+
+        return isError;
+
+
+
+
+    }
+
+
+
+    //Validators
+   
     render = () => <div>{!this.props.accountWasCreated.success ? this.createAccountIsVisible() : !this.props.profileWasCompleted.success ? this.createProfileIsVisible() : this.searchPanelIsVisible()}</div>
 }
 
