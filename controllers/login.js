@@ -1,7 +1,5 @@
-
 let bcrypt = require('bcrypt');
 const db = require("../models");
-
 
 validateUser = (email, password) => {
     return new Promise((resolve, reject)=>{

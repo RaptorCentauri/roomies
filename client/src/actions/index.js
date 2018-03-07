@@ -5,9 +5,8 @@ export const changeSearchParams = (name, value) => {
     }
 };
 
-export const changeCredentials = (name, value) => {
-    console.log("YES YES YESYEYS ");
-    
+
+export const changeCredentials = (name, value) => {    
     return {
         type: "LOGIN_VALUES_ENTERED",
         payload: { name: name, value: value }
@@ -80,3 +79,5 @@ export const changeCreateNewUser = (bool) => {
         payload: bool
     }
 };
+
+

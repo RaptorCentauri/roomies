@@ -32,25 +32,6 @@ let matchDispatchtoProps = (dispatch) => {
 
 class MainContainer extends React.Component{
 
-    loginPanelIsVisible = () => {
-        return(
-            <LoginPanel handleInputChange={this.handleInputChange} loginUser={this.handleLoginClick} signUp={this.handleSignUpClick}/>
-        )
-    }
-
-
-    signUpContainerIsVisible =() => {
-        return(
-            <SignUpContainer />
-        )
-    }
-
-    matchesContainerIsVisible = () => {
-        return(
-            <MatchesContainer />
-        )
-    }
-
     handleInputChange = (e) => {
         const target = e.target;
         const value = target.value;
@@ -81,14 +62,28 @@ class MainContainer extends React.Component{
     
 
 
+    componentToRender = () => {
+        let renderedComponent;
+
+        if(!this.props.userIsLoggedIn.success && !this.props.createNewUser.success){
+               renderedComponent = <LoginPanel handleInputChange={this.handleInputChange} loginUser={this.handleLoginClick} signUp={this.handleSignUpClick} />
+        }
+
+        if (this.props.createNewUser.success){
+               renderedComponent = <SignUpContainer />
+        }
+
+        if(this.props.userIsLoggedIn.success){
+              renderedComponent = <MatchesContainer />
+        }
+        
+        return renderedComponent;
+    }
+
+
 	render(){
 		return(
-            // <SignUpContainer />
-
-            // <div>{!this.props.userIsLoggedIn.success ? this.loginPanelIsVisible() :  this.matchesContainerIsVisible()}</div>
-
-
-            <div>{!this.props.userIsLoggedIn.success || !this.props.createNewUser.success ? this.loginPanelIsVisible() : !this.props.accountWasCreated.success ? this.signUpContainerIsVisible() : this.matchesContainerIsVisible()}</div>
+            <div>{this.componentToRender()}</div>
 		)
 	}
 }

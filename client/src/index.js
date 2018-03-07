@@ -9,9 +9,6 @@ import App from './App';
 
 const store = createStore(allReducers);
 
-// console.log(store.getState());
-
-
 
 store.subscribe(()=>console.log("Store Updated", store.getState()))
 
