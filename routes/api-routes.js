@@ -53,6 +53,48 @@ module.exports = (app)=>{
         db.user.findAll({}).then((dbMatches) => res.json(dbMatches));
     })
 
+
+//FINDING A CURRENT USER? RR
+  app.GET("/api/:userId", (req, res)=>{
+    db.roommates.findOne({
+      where: {
+        userId: req.params.userId
+      }
+    })
+    .then(() => console.log(res));
+/*    .then((dbUser)=>{
+      if (!dbUser) {
+        db.User.create(req.body).then((dbUser)=>{
+          res.json(dbUser);
+        });
+      }
+      else res.json(false);
+    });*/
+  });
+
+//UPDATING THE NEW DATABASE? RR
+app.PUT("/api/updateDB/:userId"), (res,res) => {
+
+    db.User.update ({
+        added: true
+    },
+        where: {
+        userId: req.params.userId
+      }
+    ).then(() => console.log(res));
+    /*    .then((dbUser)=>{
+      if (!dbUser) {
+        db.User.create(req.body).then((dbUser)=>{
+          res.json(dbUser);
+        });
+      }
+      else res.json(false);
+    });*/
+}
+
+
+
+
 };
 
 
