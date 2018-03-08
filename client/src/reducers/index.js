@@ -6,11 +6,8 @@ import NewAccount from "./newAccountReducer";
 import NewAccountErrors from "./newAccountErrorsReducer";
 import Profile from "./profileReducer";
 import ProfileErrors from "./profileErrorsReducer";
-import AccountWasCreated from "./accountWasCreated";
-import ProfileWasCompleted from "./profileWasCompleted.js";
+import AccountWasCompleted from "./accountWasCompletedReducer";
 import UserIsLoggedIn from "./userIsLoggedIn.js";
-import CreateNewUser from "./createNewUser.js";
-
 
 const allReducers = combineReducers({
     matches: MatchesReducer,
@@ -20,11 +17,8 @@ const allReducers = combineReducers({
     newAccountErrors: NewAccountErrors,
     profile: Profile,
     profileErrors: ProfileErrors,
-    accountWasCreated: AccountWasCreated,
-    profileWasCompleted: ProfileWasCompleted,
     userIsLoggedIn: UserIsLoggedIn,
-    createNewUser:CreateNewUser
-
+    accountWasCompleted: AccountWasCompleted
 });
 
 export default allReducers;

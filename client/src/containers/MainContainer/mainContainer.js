@@ -7,7 +7,7 @@ import "./mainContainer.css"
 import API from "../../util/API.js";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { changeCredentials, changeUserIsLoggedIn, changeAccountWasCreated, changeCreateNewUser} from "../../actions/index.js"
+import { changeCredentials, changeUserIsLoggedIn, changeAccountWasCompletedStatus} from "../../actions/index.js"
 
 
 let mapStateToProps = (state) => {
@@ -15,16 +15,13 @@ let mapStateToProps = (state) => {
         credentials: state.credentials,
         userIsLoggedIn: state.userIsLoggedIn,
         accountWasCreated: state.accountWasCreated,
-        createNewUser: state.createNewUser,
-        profileWasComnpleted: state.profileWasCompleted
-        
+        accountWasCompleted: state.accountWasCompleted        
     };
 }
 
 const matchDispatchtoProps = (dispatch) => {
-    return bindActionCreators({changeCredentials, changeUserIsLoggedIn, changeAccountWasCreated, changeCreateNewUser}, dispatch)
+    return bindActionCreators({changeCredentials, changeUserIsLoggedIn, changeAccountWasCompletedStatus}, dispatch)
 }
-
 
 class MainContainer extends React.Component{
 
@@ -45,14 +42,14 @@ class MainContainer extends React.Component{
             .then((res) => {                
                 if (res.success) {
                     this.props.changeUserIsLoggedIn(res.id, res.success)
-                    this.props.changeAccountWasCreated(true)
+                    // this.props.changeAccountWasCreated(true)
                 }
             });
     }
 
     handleSignUpClick = (e) => {
         e.preventDefault();
-        this.props.changeCreateNewUser(true);
+        this.props.changeAccountWasCompletedStatus("pending");
     }
     
 
@@ -60,15 +57,15 @@ class MainContainer extends React.Component{
     componentToRender = () => {
         let renderedComponent;
 
-        if(!this.props.userIsLoggedIn.success && !this.props.createNewUser.success){
+        if(!this.props.userIsLoggedIn.success){
                renderedComponent = <LoginPanel handleInputChange={this.handleInputChange} loginUser={this.handleLoginClick} signUp={this.handleSignUpClick} />
         }
 
-        if (this.props.createNewUser.success){
+        if (this.props.accountWasCompleted.status == "pending"){
                renderedComponent = <SignUpContainer />
         }
 
-        if(this.props.userIsLoggedIn.success && this.props.profileWasComnpleted.success){
+        if (this.props.userIsLoggedIn.success && this.props.accountWasCompleted.status == "complete"){
               renderedComponent = <MatchesContainer />
         }
         

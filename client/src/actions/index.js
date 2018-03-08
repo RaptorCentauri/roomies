@@ -49,12 +49,34 @@ export const changeProfile = (name, value) => {
     }
 };
 
-export const changeAccountWasCreated = (bool) => {
+export const changeAccountWasCompletedStatus = (status) => {
     return {
-        type: "NEW_ACCOUNT_WAS_MADE",
+        type: "ACCOUNT_COMPLETION_STATUS_CHANGED",
+        payload: status
+    }
+};
+
+export const changeAccountWasCompletedId = (id) => {
+    return {
+        type: "ACCOUNT_COMPLETION_ID_CHANGED",
+        payload: id
+    }
+};
+
+export const changeAccountWasCompletedProfile = (bool) => {
+    return {
+        type: "ACCOUNT_COMPLETION_PROFILE_CHANGED",
         payload: bool
     }
 };
+
+export const changeAccountWasCompletedSearchParams = (bool) => {
+    return {
+        type: "ACCOUNT_COMPLETION_SEARCHPARAMS_CHANGED",
+        payload: bool
+    }
+};
+
 
 export const changeProfileWasCompleted = (bool) => {
     console.log("LOOK LOOK LOKK");
@@ -71,6 +93,9 @@ export const changeUserIsLoggedIn = (id, bool) => {
         payload: {id: id, success: bool}
     }
 };
+
+
+
 
 export const changeCreateNewUser = (bool) => {
     return {

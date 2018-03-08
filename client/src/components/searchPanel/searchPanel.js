@@ -58,7 +58,7 @@ class SearchPanel extends React.Component{
                     <br />
 
 
-                    <button id="search-button" onClick={this.props.clickBtn}>Find Me A Roomie!</button>
+                    <button id="search-button" onClick={this.props.handleClick}>Find Me A Roomie!</button>
 
                 </form>
             </div>

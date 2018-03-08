@@ -62,7 +62,7 @@ class CreateProfilePanel extends React.Component{
 
                         <br/>
 
-					<button onClick={this.props.clicky}>Test</button>
+					<button onClick={this.props.handleClick}>Test</button>
 
 				</form>
 

@@ -5,7 +5,7 @@ import SearchPanel from "../../components/searchPanel/searchPanel.js"
 import API from "../../util/API.js";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { changeProfile, changeProfileErrors, changeNewAccount, changeNewAccountErrors, changeAccountWasCreated, changeProfileWasCompleted, changeSearchParams, changeUserIsLoggedIn } from "../../actions/index.js"
+import { changeProfile, changeProfileErrors, changeNewAccount, changeNewAccountErrors, changeProfileWasCompleted, changeSearchParams, changeUserIsLoggedIn, changeAccountWasCompletedId } from "../../actions/index.js"
 
 //IMPORTANT FOR REDUX=======================================================
 //============================================================================
@@ -16,15 +16,15 @@ let mapStateToProps = (state) => {
         newAccount: state.newAccount,
         profileErrors: state.profileErrors,
         newAccountErrors: state.newAccountErrors,
-        accountWasCreated: state.accountWasCreated,
-        searchParams: state.searchParams,
-        profileWasCompleted: state.profileWasCompleted,
-        userIsLoggedIn: state.userIsLoggedIn
+        // accountWasCreated: state.accountWasCreated,
+        // searchParams: state.searchParams,
+        // profileWasCompleted: state.profileWasCompleted,
+        // userIsLoggedIn: state.userIsLoggedIn
     };
 }
 
 let matchDispatchtoProps = (dispatch) => {
-    return bindActionCreators({changeProfile, changeProfileErrors, changeNewAccount, changeNewAccountErrors, changeAccountWasCreated, changeProfileWasCompleted, changeSearchParams, changeUserIsLoggedIn}, dispatch)
+    return bindActionCreators({changeProfile, changeProfileErrors, changeNewAccount, changeNewAccountErrors, changeProfileWasCompleted, changeSearchParams, changeUserIsLoggedIn, changeAccountWasCompletedId}, dispatch)
 }
 //============================================================================
 //============================================================================
@@ -42,7 +42,7 @@ class SignUpPage extends React.Component{
     createAccountIsVisible = () => {
         return (
             <CreateAccountPanel
-                handleClick={this.handleClick}
+                handleClick={this.handleClickForNewAccount}
                 handleInputChange={this.handleInputChangeForCreateAccount}
                 emailError={this.props.newAccountErrors.emailError}
                 passwordError={this.props.newAccountErrors.passwordError}
@@ -78,15 +78,30 @@ class SignUpPage extends React.Component{
 
     //Event Listeners
 
-    handleClickForNewAccount = () => {
+    handleClickForNewAccount = (e) => {
+        e.preventDefault()
+        
+        console.log(this.props.newAccount);
+        
+
         API.createNewUser(this.props.newAccount)
             .then((res) => {
                 if (res.success) {
-                    this.props.changeAccountWasCreated(true)
-                    this.props.changeUserIsLoggedIn(res.id, res.success)
+                        this.props.changeAccountWasCompletedId(res.id);
+                    // this.props.changeAccountWasCreated(true)
+                    // this.props.changeUserIsLoggedIn(res.id, res.success)
                 }
             });
     }
+
+    handleInputChangeForCreateAccount = (e) => {
+        const target = e.target;
+        const value = target.value;
+        const name = target.name;
+
+        this.props.changeNewAccount(name, value)
+    }
+
 
     handleClickForCreateProfile = () =>{
 
@@ -100,48 +115,35 @@ class SignUpPage extends React.Component{
 
 
 
-    handleClick = (e) => {
-        e.preventDefault();
+    // handleClick = (e) => {
+    //     e.preventDefault();
 
-        if (!this.props.accountWasCreated.success) {
-            if (!this.validateNewAccount()) {
-                API.createNewUser(this.props.newAccount)
-                    .then((res) => { if(res.success){
-                        this.props.changeAccountWasCreated(true)
-                        this.props.changeUserIsLoggedIn(res.id, res.success)
-                    }
-                });
-            }
-        }
-        // Click for profile creation
-        else if(!this.props.profileWasCompleted.success){
-            if (!this.validateProfile()) {
-                console.log(this.props.profile); 
-                console.log(this.props.userIsLoggedIn.id);
+    //     if (!this.props.accountWasCreated.success) {
+    //         if (!this.validateNewAccount()) {
+    //             API.createNewUser(this.props.newAccount)
+    //                 .then((res) => { if(res.success){
+    //                     this.props.changeAccountWasCreated(true)
+    //                     this.props.changeUserIsLoggedIn(res.id, res.success)
+    //                 }
+    //             });
+    //         }
+    //     }
+    //     // Click for profile creation
+    //     else if(!this.props.profileWasCompleted.success){
+    //         if (!this.validateProfile()) {                
+    //             let profileToUpdate = {
+    //                 profile: this.props.profile,
+    //                 id: this.props.userIsLoggedIn.id
+    //             }
                 
-                let profileToUpdate = {
-                    profile: this.props.profile,
-                    id: this.props.userIsLoggedIn.id
-                }
-                
-                API.setProfile(profileToUpdate);
-                //WE WILL SEND THE USER PROFILE TO THE DB and call the next function upon success
-                this.props.changeProfileWasCompleted(true)
-            }
-        }
-        else{
+    //             API.updateUserProfile(profileToUpdate)
+    //                 .then((res) =>{ if(res){console.log(res)}});
+                    
+    //             }
+    //     }
 
+    // };
 
-        }
-    };
-
-    handleInputChangeForCreateAccount = (e) => {
-        const target = e.target;
-        const value = target.value;
-        const name = target.name;
-
-        this.props.changeNewAccount(name, value)
-    }
 
 
     handleInputChangeForProfile = (e) => {
@@ -249,8 +251,23 @@ class SignUpPage extends React.Component{
 
 
     //Validators
-   
-    render = () => <div>{!this.props.accountWasCreated.success ? this.createAccountIsVisible() : !this.props.profileWasCompleted.success ? this.createProfileIsVisible() : this.searchPanelIsVisible()}</div>
+
+    render = () => <CreateAccountPanel
+        handleClick={this.handleClickForNewAccount}
+        handleInputChange={this.handleInputChangeForCreateAccount}
+    />
+
+
+
+
+
+
+
+
+
+
+
+    // render = () => <div>{!this.props.accountWasCreated.success ? this.createAccountIsVisible() : !this.props.profileWasCompleted.success ? this.createProfileIsVisible() : this.searchPanelIsVisible()}</div>
 }
 
 export default connect(mapStateToProps, matchDispatchtoProps)(SignUpPage);

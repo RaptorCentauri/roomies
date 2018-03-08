@@ -39,12 +39,4 @@ const CreateAccountPanel = (props) =>{
     )
 }
 
-
-
-
-
-
-
-
-
 export default CreateAccountPanel;

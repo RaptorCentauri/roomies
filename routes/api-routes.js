@@ -13,12 +13,19 @@ module.exports = (app)=>{
 
     //ROUTE FOR LOGIN
     app.post("/api/login", function (req, res) {
-        validateUser(req.body.email, req.body.password).then((val) => res.json(val));
+        validateUser(req.body.email, req.body.password).then((val) => console.log(val)
+        );
     })
 
 
     //ROUTE FOR CREATING ACCOUNT
     app.post("/api/newacct", function (req, res) {
+        console.log("THIS WAS HIT!!!!!!");
+        
+        console.log(req.body.email);
+        console.log(req.body.password);
+        
+        
         createNewAccount(req.body.email, req.body.password).then((val) => res.json({id: val, success: true}));
     });
 
