@@ -1,6 +1,9 @@
 const signup = require("../controllers/signup.js");
 const login = require("../controllers/login.js");
 const updateUserProfile = require("../controllers/updateUserProfile.js")
+const updateUserSearchParams = require("../controllers/updateUserSearchParams.js")
+
+
 
 // const jwt = require("jsonwebtoken");
 
@@ -25,13 +28,20 @@ module.exports = (app)=>{
 
 
     //ROUTE FOR CREATING USER PROFILE
-    app.post("/api/profile", function (req, res) {
-        console.log("Money Shot");
-        
+    app.post("/api/profile", function (req, res) {        
         let profileData = req.body.profile;
         let id = req.body.id;
 
         updateUserProfile(profileData, id).then((val)=> res.json(val));
+    })
+
+    app.post("/api/searchparams", function (req, res) {
+        console.log("HIT IT AND QUIT IT");
+        
+        let searchParams = req.body.searchParams;
+        let id = req.body.id;
+
+        updateUserSearchParams(searchParams, id).then((val) => res.json(val));
     })
 
 

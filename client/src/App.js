@@ -1,6 +1,5 @@
 import React from 'react';
 import MatchesPage from "./containers/MatchesContainer/matchesContainer.js"
-import SignUpPage from "./containers/SignUpContainer/SignUpContainer.js"
 import LoginPanel from "./components/loginPanel/loginPanel.js"
 import CreateAccountPanel from "./components/createAccountPanel/createAccountPanel.jsx"
 import CreateProfilePanel from "./components/createProfilePanel/createProfilePanel.js"
@@ -91,7 +90,19 @@ class App extends React.Component{
 
     handleCreateSearchParamsClick = (e) => {
         e.preventDefault();
-        this.props.changeAccountWasCompletedSearchParams(true);
+
+        let searchParamsToUpdate = {
+            searchParams: this.props.searchParams,
+            id: this.props.accountWasCompleted.id
+        }
+
+
+        API.updateUserSearchParams(searchParamsToUpdate)
+            .then((res) => {
+                if (res) {
+                    this.props.changeAccountWasCompletedSearchParams(true);
+                }
+            });
     }
 
     handleLoginInputChange = (e) => {

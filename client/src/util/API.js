@@ -22,6 +22,13 @@ export default {
         })
     },
 
+    updateUserSearchParams: (searchParamsToUpdate) => {
+        return new Promise((resolve, reject) => {
+            axios.post("/api/searchparams", searchParamsToUpdate).then((res) => res.data ? resolve(res.data) : resolve(false))
+        })
+    },
+
+
     
     
     //Returns an array JSON objects of users from the DB that match the search parameters
@@ -30,14 +37,3 @@ export default {
     //Sets new user profile
 
 }
-
-
-// createNewUser: (credentials) => axios.post("/api/newacct", credentials).then((res) => console.log(res)),
-
-
-
-// validateLogin: (credentials) => {
-//     return new Promise((resolve, reject) => {
-//         axios.post("/api/login", credentials).then((res) => res.data ? resolve(true) : resolve(false)),
-//     })
-// },
