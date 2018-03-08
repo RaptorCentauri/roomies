@@ -273,9 +273,7 @@ class App extends React.Component{
     render(){
         return(
             <div>
-                <CreateProfilePanel />
-                {/* <SearchPanel /> */}
-                {/* {this.componentToRender(this.props.userIsLoggedIn.success, this.props.accountWasCompleted)} */}
+                {this.componentToRender(this.props.userIsLoggedIn.success, this.props.accountWasCompleted)}
             </div>
         )
     }
