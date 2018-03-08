@@ -1,5 +1,4 @@
 import React from 'react';
-import MainContainer from "./containers/MainContainer/mainContainer.js"
 import MatchesPage from "./containers/MatchesContainer/matchesContainer.js"
 import SignUpPage from "./containers/SignUpContainer/SignUpContainer.js"
 import LoginPanel from "./components/loginPanel/loginPanel.js"
@@ -8,8 +7,6 @@ import CreateProfilePanel from "./components/createProfilePanel/createProfilePan
 import SearchPanel from "./components/searchPanel/searchPanel.js"
 
 import API from "./util/API.js";
-
-
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -27,7 +24,7 @@ let mapStateToProps = (state) => {
         newAccountErrors: state.newAccountErrors,
         accountWasCompleted: state.accountWasCompleted,
         // accountWasCreated: state.accountWasCreated,
-        // searchParams: state.searchParams,
+        searchParams: state.searchParams,
         userIsLoggedIn: state.userIsLoggedIn
     };
 }
@@ -221,7 +218,7 @@ class App extends React.Component{
         }
 
         if (obj.status === "pending" && obj.id && obj.profile) {
-            toRender = <SearchPanel handleClick={this.handleCreateSearchParamsClick} handleInputChange={this.handleCreateSearchParamsInputChange}/>
+            toRender = <SearchPanel handleClick={this.handleCreateSearchParamsClick} handleInputChange={this.handleCreateSearchParamsInputChange} gender={this.props.searchParams.gender}/>
         }
 
         if(obj.searchparams){
