@@ -47,6 +47,8 @@ class App extends React.Component{
                 .then((res) => {
                     if (res) {
                         console.log(res);
+                        console.log(res.avatar);
+
                         
                         // this.props.changeAccountWasCompletedProfile(res);
                     }

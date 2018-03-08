@@ -40,8 +40,7 @@ module.exports = (app)=>{
         console.log("#############################");
 
         
-        getUserProfile(req.body.id).then((val) =>{ console.log(val.profile);
-         res.json(val)});
+        getUserProfile(req.body.id).then((val) =>res.json(val));
     })
 
     //ROUTE FOR SAVING SEARCH PARAMETERS

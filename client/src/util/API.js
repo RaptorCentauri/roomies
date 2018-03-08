@@ -30,7 +30,7 @@ export default {
 
         
         return new Promise((resolve, reject) => {
-            axios.post("/api/getprofile", ProfileId).then((res) => res ? console.log("GOOD! " + res) : console.log("BAD! " + res.data))
+            axios.post("/api/getprofile", ProfileId).then((res) => res.data ? resolve(res.data) : resolve(false))
         })
     },
 
