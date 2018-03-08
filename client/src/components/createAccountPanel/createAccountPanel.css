@@ -1,6 +1,6 @@
-#login-panel{
+#create-account-panel{
     /* background-color: rgb(201, 0, 67); */
-        background-color: rgb(17, 95, 6);
+    background-color: #eeeeee;
 
     width: 500px;
     height: 300px;
@@ -28,13 +28,13 @@
 }
 
 .input-field{
-    background-color: #00000000;
+    background-color: rgba(179, 179, 179, 0);
     padding: 3px 0 3px 4px;
     color: #cccccc;
     border: 1px solid #cccccc;
 }
 
-#login-button-row{
+#create-account-panel-button-row{
     /* background-color: mediumspringgreen; */
     display: flex;
     /* width: inherit; */
@@ -42,7 +42,7 @@
     justify-content: flex-end;
 }
 
-#login-button-row button{
+#create-account-panel-button-row button{
     background-color: #ffffff00;
     border: 1px solid #cccccc;
     border: none;
@@ -51,6 +51,7 @@
 }
 
 
-#login-button-row button:hover{
+#create-account-panel-button-row button:hover{
     color: #999999;
 }
+

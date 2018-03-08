@@ -11,7 +11,7 @@ class CreateProfilePanel extends React.Component{
         let rentOptions = rent.map(function (i) {
             return <option value={i} key={i}>I can afford a rent of ${i}</option>;
         })
-        return <select name="rent" onChange={this.props.handleInputChange}>{rentOptions}</select>
+        return <select name="rent" onChange={this.props.handleInputChange} id="create-profile-select">{rentOptions}</select>
     }
 
 	render(){
@@ -20,11 +20,16 @@ class CreateProfilePanel extends React.Component{
 				<form action="" method="">
                     <div className="field-wrapper">
 
-                        <input type="file" onChange={this.props.handleUploadImage} name="avatar" id="" accept="image/*"/>
-                        
-                        <h1>NEED TO ADD USER_AVATAR</h1>
-                        <br/>
+                        <label htmlFor="avatar-upload-input" id="avatar-upload-label"><img src="/assets/images/ui-elements/avatarUploadPlaceholder.png" alt="upload avatar"/></label>
 
+                        <br/>
+                        <br />
+                        <br />
+
+
+
+                        <input type="file" onChange={this.props.handleUploadImage} name="avatar" id="avatar-upload-input" accept="image/*"/>
+                    
                         <input className="input-style" onChange={this.props.handleInputChange} type="text" placeholder="First Name" name="firstName"/>
                         <h6 className="error-style">{this.props.firstNameError}</h6>
                 
@@ -35,14 +40,14 @@ class CreateProfilePanel extends React.Component{
                         <h6 className="error-style">{this.props.bioError}</h6>
                     </div>
     
- 						<select name="gender" onChange={this.props.handleInputChange}>
+                    <select name="gender" onChange={this.props.handleInputChange} id="create-profile-select">
                             <option value="man">I am a man</option>
  							<option value="woman">I am a woman</option>
  						</select>					
 
                         <br/>
 
-						<select name="pets" onChange={this.props.handleInputChange}>
+                    <select name="pets" onChange={this.props.handleInputChange} id="create-profile-select">
 							<option value="none">I do not have pets</option>
 							<option value="cat">I have cat(s)</option>
 							<option value="dog">I have dog(s)</option>
@@ -51,7 +56,7 @@ class CreateProfilePanel extends React.Component{
 
                     <br />
 
-                        <select name="smokes" onChange={this.props.handleInputChange}>
+                    <select name="smokes" onChange={this.props.handleInputChange} id="create-profile-select">
                             <option value={false}>I am not a smoker</option>
                             <option value={true}>I am a smoker</option>
                         </select>
@@ -61,8 +66,10 @@ class CreateProfilePanel extends React.Component{
                         {this.rentSelect()}
 
                         <br/>
+                    <div id="create-profile-button-row">
+                        <button onClick={this.props.handleClick} id="create-profile-button">Create My Profile</button>
+                    </div>
 
-					<button onClick={this.props.handleClick}>Test</button>
 
 				</form>
 

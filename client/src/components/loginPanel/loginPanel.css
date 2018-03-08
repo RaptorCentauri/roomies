@@ -6,7 +6,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* flex-direction: column; */
     box-shadow:10px 10px 10px rgb(110, 110, 110);
 }
 
@@ -33,14 +32,13 @@
 }
 
 #login-button-row{
-    /* background-color: mediumspringgreen; */
     display: flex;
-    /* width: inherit; */
-    /* align-items: center; */
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: space-between;
 }
 
 #login-button-row button{
+    display: flex;
     background-color: #ffffff00;
     border: 1px solid #cccccc;
     border: none;

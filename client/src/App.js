@@ -56,7 +56,6 @@ class App extends React.Component{
         }
     // }
 
-
     handleLoginClick = (e) => {
         e.preventDefault();
         
@@ -274,7 +273,9 @@ class App extends React.Component{
     render(){
         return(
             <div>
-                {this.componentToRender(this.props.userIsLoggedIn.success, this.props.accountWasCompleted)}
+                <CreateProfilePanel />
+                {/* <SearchPanel /> */}
+                {/* {this.componentToRender(this.props.userIsLoggedIn.success, this.props.accountWasCompleted)} */}
             </div>
         )
     }

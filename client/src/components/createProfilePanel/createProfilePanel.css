@@ -11,28 +11,20 @@
 .field-wrapper{
     box-sizing: border-box;
     width: 400px;
-    /* width: 400px; */
-    /* height: 200px; */
-    /* height: inherit; */
-    /* background-color: seagreen; */
-    /* border: 5px solid black; */
 }
 
 .input-style{
     width:inherit;
-    /* background-color: #00000000; */
+    /* background: transparent */
     padding: 3px 0 3px 4px;
     color: #cccccc;
     border: 1px solid #cccccc;
 }
 
-
-
 .error-style{
     display: flex;
     align-items: center;
     height: 20px;
-    /* background-color: rebeccapurple; */
     color: red;
 }
 
@@ -40,5 +32,40 @@
     font-size: 20px;
 }
 
+#create-profile-button-row{
+    display: flex;
+    justify-content: flex-end;
+}
+
+#create-profile-button{
+    display: flex;
+    background-color: #ffffff00;
+    border: 1px solid #cccccc;
+    border: none;
+    font-size: 1.15em;
+    color: #cccccc;
+}
+
+#create-profile-select{
+     border: none;
+    border-radius: 0;
+    color: rgb(76, 76, 76);
+    font-weight: 500;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    background: transparent;
+}
+
+#avatar-upload-input{
+    display: none;
+}
 
 
+
+#avatar-upload-label{
+    /* width: 20px; */
+    /* height: 20px; */
+    /* background-color: red; */
+}

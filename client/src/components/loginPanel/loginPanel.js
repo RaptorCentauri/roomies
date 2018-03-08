@@ -12,12 +12,11 @@ const LoginPanel = (props) =>{
                     </div>
 
                     <div id="login-button-row">
+                        <button onClick={props.signUp} type="submit">Sign Up</button>
                         <button onClick={props.loginUser} type="submit">Login</button>
-                        <br/>
-
                     </div>
                 </form>
-                <button onClick={props.signUp} type="submit">Sign Up</button>
+                
             </div>
         </div>
     )
