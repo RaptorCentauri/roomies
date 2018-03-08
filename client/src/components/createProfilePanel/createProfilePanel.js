@@ -19,7 +19,8 @@ class CreateProfilePanel extends React.Component{
 			<div id="profile-wrapper">
 				<form action="" method="">
                     <div className="field-wrapper">
-
+            
+                        <img src={this.props.avatar} alt=""/>
                         <label htmlFor="avatar-upload-input" id="avatar-upload-label"><img src="/assets/images/ui-elements/avatarUploadPlaceholder.png" alt="upload avatar"/></label>
                         <input type="file" onChange={this.props.handleUploadImage} name="avatar" id="avatar-upload-input" accept="image/*" />
 

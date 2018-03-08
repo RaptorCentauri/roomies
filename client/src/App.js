@@ -134,10 +134,10 @@ class App extends React.Component{
 
     handleUploadImage = (e) => {
         const target = e.target;
-        const value = target.files[0].name;
+        const value = target.files[0];
         const name = target.name;
 
-        console.log("LOOK FOR THIS!!!  " + name);
+        // console.log("LOOK FOR THIS!!!  " + name);
         
         console.log(target.files[0]);
         
@@ -250,7 +250,9 @@ class App extends React.Component{
         }
 
         if (obj.status === "pending" && obj.id) {
-            toRender = <CreateProfilePanel handleClick={this.handleCreateProfileClick} 
+            toRender = <CreateProfilePanel 
+                avatar={this.props.profile.avatar}
+                handleClick={this.handleCreateProfileClick} 
                 handleInputChange={this.handleCreateProfileInputChange}
                 handleUploadImage = {this.handleUploadImage}
                 firstNameError={this.props.profileErrors.firstNameError}
