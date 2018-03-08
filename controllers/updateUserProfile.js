@@ -7,6 +7,7 @@ updateUserProfile = (userProfile, id) => {
         db.profile.update({
             firstName: userProfile.firstName,
             lastName: userProfile.lastName,
+            avatar: userProfile.avatar,
             aboutMe: userProfile.bio,
             gender: userProfile.gender,
             pets: userProfile.pets,

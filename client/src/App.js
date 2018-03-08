@@ -113,6 +113,20 @@ class App extends React.Component{
         this.props.changeCredentials(name, value)
     } 
 
+
+    handleUploadImage = (e) => {
+        const target = e.target;
+        const value = target.files[0].name;
+        const name = target.name;
+
+        console.log("LOOK FOR THIS!!!  " + name);
+        
+        console.log(target.files[0]);
+        
+
+        this.props.changeProfile(name, value)
+    } 
+
     handleSignUpInputChange = (e) => {
         const target = e.target;
         const value = target.value;
@@ -218,7 +232,9 @@ class App extends React.Component{
         }
 
         if (obj.status === "pending" && obj.id) {
-            toRender = <CreateProfilePanel handleClick={this.handleCreateProfileClick} handleInputChange={this.handleCreateProfileInputChange}
+            toRender = <CreateProfilePanel handleClick={this.handleCreateProfileClick} 
+                handleInputChange={this.handleCreateProfileInputChange}
+                handleUploadImage = {this.handleUploadImage}
                 firstNameError={this.props.profileErrors.firstNameError}
                 lastNameError={this.props.profileErrors.lastNameError}
                 birthdayError={this.props.profileErrors.birthdayError}

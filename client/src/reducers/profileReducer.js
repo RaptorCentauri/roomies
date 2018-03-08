@@ -1,4 +1,5 @@
 const initialState = {
+    avatar: null,
     firstName: null,
     lastName: null,
     bio: null,
