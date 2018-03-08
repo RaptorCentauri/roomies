@@ -20,6 +20,20 @@ export default {
         })
     },
 
+    getUserProfile: (ProfileId) => {
+        console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+        console.log("GET PROFILE WAS HIT!!!!!!!!!");
+        console.log(ProfileId);
+        console.log(typeof(ProfileId));
+
+        console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+
+        
+        return new Promise((resolve, reject) => {
+            axios.post("/api/getprofile", ProfileId).then((res) => res ? console.log("GOOD! " + res) : console.log("BAD! " + res.data))
+        })
+    },
+
     updateUserSearchParams: (searchParamsToUpdate) => {
         return new Promise((resolve, reject) => {
             axios.post("/api/searchparams", searchParamsToUpdate).then((res) => res.data ? resolve(res.data) : resolve(false))

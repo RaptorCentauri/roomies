@@ -37,6 +37,24 @@ let matchDispatchtoProps = (dispatch) => {
 
 class App extends React.Component{
 
+    handleGetProfileClick = (e) => {
+        e.preventDefault();
+        // if (!this.validateProfile()) {
+    
+            let ProfileId = {id: this.props.accountWasCompleted.id}
+
+        API.getUserProfile(ProfileId)
+                .then((res) => {
+                    if (res) {
+                        console.log(res);
+                        
+                        // this.props.changeAccountWasCompletedProfile(res);
+                    }
+                });
+        }
+    // }
+
+
     handleLoginClick = (e) => {
         e.preventDefault();
         
@@ -112,7 +130,6 @@ class App extends React.Component{
 
         this.props.changeCredentials(name, value)
     } 
-
 
     handleUploadImage = (e) => {
         const target = e.target;
@@ -243,7 +260,7 @@ class App extends React.Component{
         }
 
         if (obj.status === "pending" && obj.id && obj.profile) {
-            toRender = <SearchPanel handleClick={this.handleCreateSearchParamsClick} handleInputChange={this.handleCreateSearchParamsInputChange} gender={this.props.searchParams.gender}/>
+            toRender = <SearchPanel testGetProfClick={this.handleGetProfileClick} handleClick={this.handleCreateSearchParamsClick} handleInputChange={this.handleCreateSearchParamsInputChange} gender={this.props.searchParams.gender}/>
         }
 
         if(obj.searchparams){

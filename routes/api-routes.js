@@ -2,6 +2,7 @@ const signup = require("../controllers/signup.js");
 const login = require("../controllers/login.js");
 const updateUserProfile = require("../controllers/updateUserProfile.js")
 const updateUserSearchParams = require("../controllers/updateUserSearchParams.js")
+const getUserProfile = require("../controllers/getUserProfile.js")
 
 // const jwt = require("jsonwebtoken");
 const db = require("../models");
@@ -21,6 +22,26 @@ module.exports = (app)=>{
     //ROUTE FOR CREATING USER PROFILE
     app.post("/api/profile", function (req, res) {        
         updateUserProfile(req.body.profile, req.body.id).then((val)=> res.json(val));
+    })
+
+    app.post("/api/getprofile", function (req, res) {
+        console.log("#############################");
+        console.log("#############################");
+        console.log(req.body);
+        // console.log(req.body.ProfileId);
+        // console.log(req.body.ProfileId.id);
+        console.log(req.body.id);
+        
+
+
+        // let temp = JSON.parse(req.query.ProfileId)
+        // console.log(temp);
+        console.log("#############################");
+        console.log("#############################");
+
+        
+        getUserProfile(req.body.id).then((val) =>{ console.log(val.profile);
+         res.json(val)});
     })
 
     //ROUTE FOR SAVING SEARCH PARAMETERS
