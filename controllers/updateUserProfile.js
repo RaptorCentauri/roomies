@@ -1,6 +1,8 @@
 const db = require("../models");
 
 updateUserProfile = (userProfile, id) => {
+    console.log(userProfile);
+    
     return new Promise((resolve, reject) => {
         db.profile.update({
             firstName: userProfile.firstName,

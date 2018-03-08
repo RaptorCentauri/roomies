@@ -118,15 +118,15 @@ class SignUpPage extends React.Component{
     // handleClick = (e) => {
     //     e.preventDefault();
 
-    //     if (!this.props.accountWasCreated.success) {
-    //         if (!this.validateNewAccount()) {
-    //             API.createNewUser(this.props.newAccount)
-    //                 .then((res) => { if(res.success){
-    //                     this.props.changeAccountWasCreated(true)
-    //                     this.props.changeUserIsLoggedIn(res.id, res.success)
-    //                 }
-    //             });
-    //         }
+        // if (!this.props.accountWasCreated.success) {
+        //     if (!this.validateNewAccount()) {
+        //         API.createNewUser(this.props.newAccount)
+        //             .then((res) => { if(res.success){
+        //                 this.props.changeAccountWasCreated(true)
+        //                 this.props.changeUserIsLoggedIn(res.id, res.success)
+        //             }
+        //         });
+            // }
     //     }
     //     // Click for profile creation
     //     else if(!this.props.profileWasCompleted.success){

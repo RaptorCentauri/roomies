@@ -19,19 +19,15 @@ module.exports = (app)=>{
 
 
     //ROUTE FOR CREATING ACCOUNT
-    app.post("/api/newacct", function (req, res) {
-        console.log("THIS WAS HIT!!!!!!");
-        
-        console.log(req.body.email);
-        console.log(req.body.password);
-        
-        
+    app.post("/api/newacct", function (req, res) {        
         createNewAccount(req.body.email, req.body.password).then((val) => res.json({id: val, success: true}));
     });
 
 
     //ROUTE FOR CREATING USER PROFILE
     app.post("/api/profile", function (req, res) {
+        console.log("Money Shot");
+        
         let profileData = req.body.profile;
         let id = req.body.id;
 

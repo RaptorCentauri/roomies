@@ -65,17 +65,31 @@ class App extends React.Component{
     handleCreateAccountClick = (e) => {
         e.preventDefault();
         if (!this.validateNewAccount()) {
-            this.props.changeAccountWasCompletedId(10);
+
+            API.createNewUser(this.props.newAccount)
+                .then((res) => {
+                    if (res.success) {
+                        this.props.changeAccountWasCompletedId(res.id);
+                    }
+                });
         }
-        // this.props.changeAccountWasCompletedId(10);
     }
 
     handleCreateProfileClick = (e) => {
         e.preventDefault();
         if (!this.validateProfile()) {
-            this.props.changeAccountWasCompletedProfile(true);
+            let profileToUpdate= {
+                profile: this.props.profile,
+                id: this.props.accountWasCompleted.id
+            }
+
+            API.updateUserProfile(profileToUpdate)
+                .then((res) => {
+                    if (res) {
+                        this.props.changeAccountWasCompletedProfile(res);
+                    }
+                });
         }
-        // this.props.changeAccountWasCompletedProfile(true);
     }
 
     handleCreateSearchParamsClick = (e) => {
@@ -185,7 +199,6 @@ class App extends React.Component{
     }
 
 
-
     componentToRender = (bool, obj) => {
         let toRender;
 
@@ -204,7 +217,6 @@ class App extends React.Component{
                 lastNameError={this.props.profileErrors.lastNameError}
                 birthdayError={this.props.profileErrors.birthdayError}
                 bioError={this.props.profileErrors.bioError}
-            
             />
         }
 
