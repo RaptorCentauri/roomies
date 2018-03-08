@@ -3,45 +3,29 @@ const login = require("../controllers/login.js");
 const updateUserProfile = require("../controllers/updateUserProfile.js")
 const updateUserSearchParams = require("../controllers/updateUserSearchParams.js")
 
-
-
 // const jwt = require("jsonwebtoken");
-
 const db = require("../models");
-// const AccountDB = require("../models/accounts.js");
-// const Accounts = 
 
 module.exports = (app)=>{
 
-
     //ROUTE FOR LOGIN
     app.post("/api/login", function (req, res) {
-        validateUser(req.body.email, req.body.password).then((val) => console.log(val)
-        );
+        validateUser(req.body.email, req.body.password).then((val) => res.json(val));
     })
-
 
     //ROUTE FOR CREATING ACCOUNT
     app.post("/api/newacct", function (req, res) {        
         createNewAccount(req.body.email, req.body.password).then((val) => res.json({id: val, success: true}));
     });
 
-
     //ROUTE FOR CREATING USER PROFILE
     app.post("/api/profile", function (req, res) {        
-        let profileData = req.body.profile;
-        let id = req.body.id;
-
-        updateUserProfile(profileData, id).then((val)=> res.json(val));
+        updateUserProfile(req.body.profile, req.body.id).then((val)=> res.json(val));
     })
 
+    //ROUTE FOR SAVING SEARCH PARAMETERS
     app.post("/api/searchparams", function (req, res) {
-        console.log("HIT IT AND QUIT IT");
-        
-        let searchParams = req.body.searchParams;
-        let id = req.body.id;
-
-        updateUserSearchParams(searchParams, id).then((val) => res.json(val));
+        updateUserSearchParams(req.body.searchParams, req.body.id).then((val) => res.json(val));
     })
 
 

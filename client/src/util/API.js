@@ -2,8 +2,6 @@ import axios from "axios";
 
 export default {
     createNewUser: (credentials) => {        
-        console.log(credentials);
-        
         return new Promise((resolve, reject) => {
             axios.post("/api/newacct", credentials).then((res) => res.data ? resolve(res.data)  : resolve(false))
         })
@@ -11,11 +9,11 @@ export default {
 
     validateLogin: (credentials) => {        
         return new Promise((resolve, reject) => {
-            axios.post("/api/login", credentials).then((res) => res.data ? console.log(res.data)
-             : resolve(false))
+            axios.post("/api/login", credentials).then((res) => res.data ? resolve(res.data): resolve(false))
         })
     },
 
+    
     updateUserProfile: (profileToUpdate) => {
         return new Promise((resolve, reject) => {
             axios.post("/api/profile", profileToUpdate).then((res) => res.data ? resolve(res.data): resolve(false))

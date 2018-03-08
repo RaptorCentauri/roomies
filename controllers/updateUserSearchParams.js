@@ -14,4 +14,3 @@ updateUserSearchParams = (searchParams, id) => {
 }
 
 module.exports = updateUserSearchParams;
-

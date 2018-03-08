@@ -13,16 +13,14 @@ import { changeAccountWasCompletedSearchParams, changeCredentials, changeProfile
 
 import './App.css';
 
-// handleLoginClick();
-
 let mapStateToProps = (state) => {
     return {
+        credentials: state.credentials,
         profile: state.profile,
         newAccount: state.newAccount,
         profileErrors: state.profileErrors,
         newAccountErrors: state.newAccountErrors,
         accountWasCompleted: state.accountWasCompleted,
-        // accountWasCreated: state.accountWasCreated,
         searchParams: state.searchParams,
         userIsLoggedIn: state.userIsLoggedIn
     };
@@ -45,10 +43,12 @@ class App extends React.Component{
         API.validateLogin(this.props.credentials)
             .then((res) => {
                 if (res.success) {
-                    console.log(res.id);
-                    console.log(res.success);
-                    // this.props.changeUserIsLoggedIn(res.id, res.success)
-                    // this.props.changeAccountWasCreated(true)
+                    this.props.changeUserIsLoggedIn(res.id, res.success)
+                    this.props.changeAccountWasCompletedId(res.id)
+
+                    //THESE ARE TEMPORARY! replace with DB call to get propper Data
+                    this.props.changeAccountWasCompletedProfile(true);
+                    this.props.changeAccountWasCompletedSearchParams(true);
                 }
             });
     }
@@ -137,7 +137,6 @@ class App extends React.Component{
         this.props.changeSearchParams(name, value)
     } 
 
-
     validateNewAccount = () => {        
         let isError = false;
 
@@ -206,7 +205,6 @@ class App extends React.Component{
         return isError;
     }
 
-
     componentToRender = (bool, obj) => {
         let toRender;
 
@@ -237,8 +235,6 @@ class App extends React.Component{
         }
         return toRender;
     }
-
-
 
     render(){
         return(
