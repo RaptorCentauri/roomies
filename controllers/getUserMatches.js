@@ -1,15 +1,8 @@
 const db = require("../models");
 const getUserProfile = require("../controllers/getUserProfile.js")
-const Op = db.Op;
+// const Op = db.Op;
 
-
-// searchGender
-// petSearch
-// smokeSearh
-// rentSearch
-// searchRent
 searchToMake = (searchGender, searchPets, searchSmoke, searchRent) => {
-// searchToMake = (searchGender) =>{
     let SearchParams= {
         sGen: "",
         sPet: "",
@@ -77,31 +70,24 @@ getUserMatches = (id) => {
 
     getUserProfile(id).then((result) =>{
         
-        foo = result.dataValues;
+        sParamsUser = result.dataValues;
 
-        let gary = searchToMake(foo.genderSearch, foo.petSearch, foo.smokeSearch, foo.rentSearch);
-        console.log(gary.sGen);
-        console.log(typeof(gary.sGen));
-
-        // searchToMake(foo.genderSearch, foo.petSearch, foo.smokeSearch, foo.rentSearch)
+        let sUser = searchToMake(sParamsUser.genderSearch, sParamsUser.petSearch, sParamsUser.smokeSearch, sParamsUser.rentSearch);
         
         db.profile.findAll({
             where: { 
-                gender: {[db.Sequelize.Op.or]: gary.sGen},
-                pets: {[db.Sequelize.Op.or]: gary.sPet},
-                smokes: {[db.Sequelize.Op.or]: gary.sSmoke},
-                rent: { [db.Sequelize.Op.lte]: gary.sRent }
+                gender: {[db.Sequelize.Op.or]: sUser.sGen},
+                pets: {[db.Sequelize.Op.or]: sUser.sPet},
+                smokes: {[db.Sequelize.Op.or]: sUser.sSmoke},
+                rent: { [db.Sequelize.Op.lte]: sUser.sRent }
             }
-        }).then((user) => {
-            if (!user) {
-                console.log("red");
-
+        }).then((matches) => {
+            if (!matches) {
                 resolve(false);
             }
             else {
-                console.log("blue");
 
-                resolve(user);
+                resolve(matches);
             }
         });
     
