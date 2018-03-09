@@ -7,10 +7,9 @@ const Op = db.Op;
 // petSearch
 // smokeSearh
 // rentSearch
-
-// searchToMake = (searchGender, searchPets, searchSmoke, searchRent) => {
-
-searchToMake = (searchGender) =>{
+// searchRent
+searchToMake = (searchGender, searchPets, searchSmoke, searchRent) => {
+// searchToMake = (searchGender) =>{
     let SearchParams= {
         sGen: "",
         sPet: "",
@@ -56,18 +55,18 @@ searchToMake = (searchGender) =>{
     }
 
     switch (searchSmoke) {
-        case true:
-            SearchParams.gSmoke = [true, false]
+        case "1":
+            SearchParams.gSmoke = ['1', '0']
             break;
-        case false:
-            SearchParams.sSmoke = [false]
+        case "0":
+            SearchParams.sSmoke = ['0']
             break;
 
         default:
             break;
     }
 
-
+    SearchParams.sRent = searchRent;
 
     return SearchParams
 }
@@ -80,7 +79,7 @@ getUserMatches = (id) => {
         
         foo = result.dataValues;
 
-        let gary = searchToMake(foo.genderSearch);
+        let gary = searchToMake(foo.genderSearch, foo.petSearch, foo.smokeSearch, foo.rentSearch);
         console.log(gary.sGen);
         console.log(typeof(gary.sGen));
 
@@ -89,9 +88,9 @@ getUserMatches = (id) => {
         db.profile.findAll({
             where: { 
                 gender: {[db.Sequelize.Op.or]: gary.sGen},
-                // pets: foo,
-                // smokes: foo,
-                // rent: foo
+                pets: {[db.Sequelize.Op.or]: gary.sPet},
+                smokes: {[db.Sequelize.Op.or]: gary.sSmoke},
+                rent: { [db.Sequelize.Op.lte]: gary.sRent }
             }
         }).then((user) => {
             if (!user) {
