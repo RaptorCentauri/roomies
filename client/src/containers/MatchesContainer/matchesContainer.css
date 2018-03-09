@@ -17,10 +17,11 @@
     /* padding: 0 50px; */
     /* width: 100vw; */
     /* height: 80vh; */
-    background-color: yellow;
+    /* background-color: yellow; */
     display: flex;
     flex-wrap: wrap;
     /* flex-direction: column;  */
     justify-content: space-around;
+    align-content: space-around;
     align-items: space-around;
 }

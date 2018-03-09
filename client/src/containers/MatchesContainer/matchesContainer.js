@@ -37,14 +37,28 @@ class MatchesPage extends React.Component {
 									<h1 id="header">We Think You'll get along great!</h1>
 
 							<div id="matches-wrapper">
-								{this.props.matches.matches.map(i => 
+								{/* {this.props.matches.matches.map(i => 
                                     <Miniprofile key={i.id}
                                                 firstname={i.firstName}
-                                                avatar={i.avatar}
+                                                bio={i.aboutMe}
+                                                // avatar={i.avatar}
                                                 rent={i.rent}
                                                 pets={i.pets}
                                                 smokes={i.smokes}
-                                />)}
+                                />)} */}
+                            <Miniprofile />
+                            <Miniprofile />
+                                <Miniprofile />
+                            <Miniprofile />
+                            <Miniprofile />
+                            <Miniprofile />
+                            <Miniprofile />
+                            <Miniprofile />
+                            <Miniprofile />
+                            <Miniprofile />
+                            <Miniprofile />
+                            <Miniprofile />
+
                             </div>
 
 

@@ -4,6 +4,7 @@
     background-color: #eeeeee;
     display: flex;
     box-shadow:10px 10px 8px rgb(163, 162, 162);
+    margin-bottom: 25px;
 }
 
 .avatar-box{
@@ -28,7 +29,7 @@
 
 .avatar-bottom > h4{
     padding: 0;
-    margin: 0;
+    margin: 15px;
 }
 
 .avatar-frame{
@@ -36,7 +37,7 @@
     height: 115px;
     width: 115px;
     border-radius: 100%;
-    background-color: dodgerblue;
+    /* background-color: dodgerblue; */
     align-self: center;
     display: flex;
     justify-content: center;

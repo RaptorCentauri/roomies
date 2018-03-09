@@ -51,9 +51,9 @@ table {
 body{
     margin: 0 auto;
     padding-top: 30px;
-    /* background-image: url("/assets/images/backgrounds/bg3.jpg");
+    background-image: url("/assets/images/backgrounds/bg3.jpg");
     background-size: cover;
-    background-repeat: no-repeat; */
+    background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;

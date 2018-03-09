@@ -14,6 +14,7 @@ import {changeMatches, changeAccountWasCompletedSearchParams, changeCredentials,
 
 import './App.css';
 import { read } from 'fs';
+// import matchesContainer from './containers/MatchesContainer/matchesContainer.js';
 
 let mapStateToProps = (state) => {
     return {
@@ -307,7 +308,8 @@ class App extends React.Component{
     render(){
         return(
             <div>
-                {this.componentToRender(this.props.userIsLoggedIn.success, this.props.accountWasCompleted, this.props.matches.matches)}
+                <MatchesPage />
+                {/* {this.componentToRender(this.props.userIsLoggedIn.success, this.props.accountWasCompleted, this.props.matches.matches)} */}
             </div>
         )
     }
