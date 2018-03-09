@@ -1,6 +1,7 @@
 const db = require("../models");
 const getUserProfile = require("../controllers/getUserProfile.js")
 
+
 searchToMake = (searchId, searchGender, searchPets, searchSmoke, searchRent) => {
     let SearchParams= {
         sId: "",
@@ -88,7 +89,6 @@ getUserMatches = (id) => {
                 resolve(false);
             }
             else {
-
                 resolve(matches);
             }
         });

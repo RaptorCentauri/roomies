@@ -140,7 +140,7 @@ class App extends React.Component{
             });
     }
 
-    handleLoginInputChange = (e) => {
+    handyleLoginInputChange = (e) => {
         const target = e.target;
         const value = target.value;
         const name = target.name;
