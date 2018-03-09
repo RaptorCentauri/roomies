@@ -1,9 +1,9 @@
 const db = require("../models");
 const getUserProfile = require("../controllers/getUserProfile.js")
-// const Op = db.Op;
 
-searchToMake = (searchGender, searchPets, searchSmoke, searchRent) => {
+searchToMake = (searchId, searchGender, searchPets, searchSmoke, searchRent) => {
     let SearchParams= {
+        sId: "",
         sGen: "",
         sPet: "",
         sSmoke: "",
@@ -59,6 +59,7 @@ searchToMake = (searchGender, searchPets, searchSmoke, searchRent) => {
             break;
     }
 
+    SearchParams.sId = searchId;
     SearchParams.sRent = searchRent;
 
     return SearchParams
@@ -72,10 +73,11 @@ getUserMatches = (id) => {
         
         sParamsUser = result.dataValues;
 
-        let sUser = searchToMake(sParamsUser.genderSearch, sParamsUser.petSearch, sParamsUser.smokeSearch, sParamsUser.rentSearch);
+        let sUser = searchToMake(sParamsUser.id, sParamsUser.genderSearch, sParamsUser.petSearch, sParamsUser.smokeSearch, sParamsUser.rentSearch);
         
         db.profile.findAll({
             where: { 
+                id: { [db.Sequelize.Op.not]: sUser.sId },
                 gender: {[db.Sequelize.Op.or]: sUser.sGen},
                 pets: {[db.Sequelize.Op.or]: sUser.sPet},
                 smokes: {[db.Sequelize.Op.or]: sUser.sSmoke},
