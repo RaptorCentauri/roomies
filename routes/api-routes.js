@@ -3,7 +3,7 @@ const login = require("../controllers/login.js");
 const updateUserProfile = require("../controllers/updateUserProfile.js")
 const updateUserSearchParams = require("../controllers/updateUserSearchParams.js")
 const getUserProfile = require("../controllers/getUserProfile.js")
-
+const getUserMatches = require("../controllers/getUserMatches.js")
 // const jwt = require("jsonwebtoken");
 const db = require("../models");
 
@@ -39,7 +39,8 @@ module.exports = (app)=>{
 
     //ROUTE FOR GETING MATCHES
     app.post("/api/matches", function (req, res) {
-        getUserMatches(req.body.id).then((val)=>res,json(val))
+        console.log("at api-routes");
+        getUserMatches(req.query.id).then((val)=>res.json(val))
     })
 
 
