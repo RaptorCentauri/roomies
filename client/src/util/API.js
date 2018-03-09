@@ -21,13 +21,7 @@ export default {
     },
 
     getUserProfile: (ProfileId) => {
-        console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-        console.log("GET PROFILE WAS HIT!!!!!!!!!");
         console.log(ProfileId);
-        console.log(typeof(ProfileId));
-
-        console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-
         
         return new Promise((resolve, reject) => {
             axios.post("/api/getprofile", ProfileId).then((res) => res.data ? resolve(res.data) : resolve(false))
@@ -40,11 +34,15 @@ export default {
         })
     },
 
-
+    getMatches: (ProfileId) => {
+        return new Promise((resolve, reject) => {
+            axios.post("/api/matches", ProfileId).then((res) => res.data ? resolve(res.data): resolve(false))
+        })
+    },
     
     
     //Returns an array JSON objects of users from the DB that match the search parameters
-    getMatches: (matchData) => axios.get("/api/matches", {params:{matchData}}).then((res) => console.log(res.data)),
+    // getMatches: (matchData) => axios.get("/api/matches", {params:{matchData}}).then((res) => console.log(res.data)),
 
     //Sets new user profile
 

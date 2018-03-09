@@ -18,8 +18,8 @@ const Miniprofile = (props) =>{
             <div className="wrapper">
                 <div className="mini-info">
                     <h4>Rent Limit ${props.rent}</h4>
-                    {(props.pets) ? <h4>Has {props.pets}</h4> : <h4>Does Not Have Pets</h4>}
-                    {(props.smokes) ? <h4>Is A Smoker</h4> : <h4>Is Not A Smoker</h4>}
+                    {/* {(props.pets) ? <h4>Has {props.pets}</h4> : <h4>Does Not Have Pets</h4>} */}
+                    {(props.smokes === "1") ? <h4>Is A Smoker</h4> : <h4>Is Not A Smoker</h4>}
 
                 </div>
                 <div className="mini-bio">

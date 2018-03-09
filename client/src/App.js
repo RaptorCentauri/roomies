@@ -9,7 +9,7 @@ import API from "./util/API.js";
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { changeAccountWasCompletedSearchParams, changeCredentials, changeProfile, changeProfileErrors, changeNewAccount, changeNewAccountErrors, changeProfileWasCompleted, changeSearchParams, changeUserIsLoggedIn, changeAccountWasCompletedId, changeAccountWasCompletedStatus, changeAccountWasCompletedProfile } from "./actions/index.js"
+import {changeMatches, changeAccountWasCompletedSearchParams, changeCredentials, changeProfile, changeProfileErrors, changeNewAccount, changeNewAccountErrors, changeProfileWasCompleted, changeSearchParams, changeUserIsLoggedIn, changeAccountWasCompletedId, changeAccountWasCompletedStatus, changeAccountWasCompletedProfile } from "./actions/index.js"
 
 import './App.css';
 import { read } from 'fs';
@@ -23,7 +23,8 @@ let mapStateToProps = (state) => {
         newAccountErrors: state.newAccountErrors,
         accountWasCompleted: state.accountWasCompleted,
         searchParams: state.searchParams,
-        userIsLoggedIn: state.userIsLoggedIn
+        userIsLoggedIn: state.userIsLoggedIn,
+        matches: state.matches
     };
 }
 
@@ -32,7 +33,7 @@ let matchDispatchtoProps = (dispatch) => {
         changeProfileErrors, changeNewAccount, changeNewAccountErrors, 
         changeProfileWasCompleted, changeSearchParams, changeUserIsLoggedIn,
         changeAccountWasCompletedId, changeAccountWasCompletedStatus, changeAccountWasCompletedProfile,
-        changeAccountWasCompletedSearchParams  }, dispatch)
+        changeAccountWasCompletedSearchParams, changeMatches  }, dispatch)
 }
 
 
@@ -40,7 +41,6 @@ class App extends React.Component{
 
     showPreviewImage = (pic) =>{
         let reader = new FileReader();
-
         let preview = document.querySelector('img');
         let file = pic;
 
@@ -135,7 +135,9 @@ class App extends React.Component{
         API.updateUserSearchParams(searchParamsToUpdate)
             .then((res) => {
                 if (res) {
-                    this.props.changeAccountWasCompletedSearchParams(true);
+                    API.getMatches(searchParamsToUpdate).then((data) => { console.log("jo jo no bo");
+                     this.props.changeMatches(data) })
+                    // this.props.changeAccountWasCompletedSearchParams(true);
                 }
             });
     }
@@ -255,7 +257,7 @@ class App extends React.Component{
         return isError;
     }
 
-    componentToRender = (bool, obj) => {
+    componentToRender = (bool, obj, matches) => {
         let toRender;
 
         if(!bool){
@@ -284,7 +286,7 @@ class App extends React.Component{
             toRender = <SearchPanel testGetProfClick={this.handleGetProfileClick} handleClick={this.handleCreateSearchParamsClick} handleInputChange={this.handleCreateSearchParamsInputChange} gender={this.props.searchParams.gender}/>
         }
 
-        if(obj.searchparams){
+        if(matches != null){            
             toRender = <MatchesPage />
         }
         return toRender;
@@ -293,7 +295,7 @@ class App extends React.Component{
     render(){
         return(
             <div>
-                {this.componentToRender(this.props.userIsLoggedIn.success, this.props.accountWasCompleted)}
+                {this.componentToRender(this.props.userIsLoggedIn.success, this.props.accountWasCompleted, this.props.matches.matches)}
             </div>
         )
     }

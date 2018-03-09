@@ -13,10 +13,14 @@ export const changeCredentials = (name, value) => {
     }
 };
 
-export const changeMatches = (name, value) => {
+export const changeMatches = (arr) => {
+    console.log("OBLADI OBLADA LIFE GOES ON");
+    console.log(arr);
+    console.log("BLA BLA BLA LIFE GOES ON");
+
     return {
-        // type: "LOGIN_VALUES_ENTERED",
-        // payload: { name: name, value: value }
+        type: "MATCHES_CHANGED",
+        payload: arr
     }
 };
 

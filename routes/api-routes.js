@@ -40,7 +40,7 @@ module.exports = (app)=>{
     //ROUTE FOR GETING MATCHES
     app.post("/api/matches", function (req, res) {
         console.log("at api-routes");
-        getUserMatches(req.query.id).then((val)=>res.json(val))
+        getUserMatches(req.body.id).then((val)=>res.json(val))
     })
 
 

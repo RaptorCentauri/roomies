@@ -1,11 +1,13 @@
 const initialState = {
-    matches: []
+    matches: null
 }
 
-const matchesReducer = (state = initialState, action) => {
+const matchesReducer = (state = initialState, action) => {        
     switch (action.type) {
-        case "":
-        //SomeAction
+        case "MATCHES_CHANGED":
+            console.log("Get SHORTY BITCHES");
+
+            state = {...state, matches: action.payload}
     }
     return state
 }
