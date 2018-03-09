@@ -7,7 +7,7 @@ const Miniprofile = (props) =>{
             <div className="avatar-box">
                 <div className="avatar-top">
                     <div className="avatar-frame">
-                        {/* {this.props.avatar} */}
+                      <img src="/assets/images/ui-elements/avatarUploadPlaceholder.png" alt="upload avatar" />
                     </div>
                 </div>
 

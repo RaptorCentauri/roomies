@@ -11,7 +11,6 @@ class SearchPanel extends React.Component{
         }
         let rentOptions = rent.map(function (i) {
            return <option value={i} key={i} > {gender === "both" ? "He or she" : gender === "man" ? "He" : "She"} can afford a rent of ${i}</option>
-            // return <option value={i} key={i}>I can afford a rent of ${i}</option>;
         })
         return <select name="rent" onChange={this.props.handleInputChange}>{rentOptions}</select>
     }
@@ -56,8 +55,6 @@ class SearchPanel extends React.Component{
 
                     <br/>
                     <br />
-
-                    {/* <button id="search-button" onClick={this.props.testGetProfClick}>TEMPORARY</button> */}
 
                     <button id="search-button" onClick={this.props.handleClick}>Find Me A Roomie!</button>
 

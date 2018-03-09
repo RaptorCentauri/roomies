@@ -25,7 +25,7 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING
         },
         smokes: {
-            type: DataTypes.STRING
+            type: DataTypes.BOOLEAN
         },
         rent: {
             type: DataTypes.INTEGER
@@ -37,7 +37,7 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING
         },
         smokeSearch:{
-            type: DataTypes.STRING
+            type: DataTypes.BOOLEAN
         },
         rentSearch:{
             type: DataTypes.INTEGER

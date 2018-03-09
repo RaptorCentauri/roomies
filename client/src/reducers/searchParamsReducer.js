@@ -2,7 +2,7 @@ const initialState = {
     gender: "both",
     pets: "none",
     smokes: false,
-    rent: 1000
+    rent: 500
 }
 
 const searchParamsReducer = (state=initialState, action) => {
