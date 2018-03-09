@@ -1,27 +1,23 @@
 import React from "react";
+import blobUtil from "blob-util";
 import "./miniProfile.css"
 
 
 class Miniprofile extends React.Component{
 
-    showImage = (pic) => {
-        console.log(pic);
-        console.log(typeof(pic));
-        
-        let reader = new FileReader();
-        let avatar = document.querySelector('img');
-        let file = pic;
+    showRandomImage = () => {
+        let num = Math.floor(Math.random() * 13)+1
 
-        reader.addEventListener("load", function () {
-            avatar.src = reader.result;
-        }, false);
+        let pic = num.toString();
 
-        if (file) {
-            reader.readAsDataURL(file);
-        }
+        let srcFile = '/assets/images/ui-elements/avatar' + pic + '.png'
+
+        let img = <img src={srcFile}  alt='upload avatar' />
+
+        return img
     }
 
-
+ 
 
     render(){
         return(
@@ -29,8 +25,8 @@ class Miniprofile extends React.Component{
             <div className="avatar-box">
                 <div className="avatar-top">
                     <div className="avatar-frame">
-                        {this.showImage(this.props.avatar.data)}
-                        <img src="/assets/images/ui-elements/avatarUploadPlaceholder.png" alt="upload avatar" />
+                            {this.showRandomImage()}
+                        {/* <img src="/assets/images/ui-elements/avatarUploadPlaceholder{.png" alt="upload avatar" /> */}
                     </div>
                 </div>
 

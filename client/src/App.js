@@ -4,6 +4,7 @@ import LoginPanel from "./components/loginPanel/loginPanel.js"
 import CreateAccountPanel from "./components/createAccountPanel/createAccountPanel.jsx"
 import CreateProfilePanel from "./components/createProfilePanel/createProfilePanel.js"
 import SearchPanel from "./components/searchPanel/searchPanel.js"
+import blobUtil from "blob-util";
 
 import API from "./util/API.js";
 
@@ -160,6 +161,15 @@ class App extends React.Component{
         console.log(target.files[0]);
         console.log(typeof(target.files[0]));
 
+        // blobUtil.blobToDataURL(target.files[0]).then(function (dataURL) {
+        //     console.log("I want to see this");
+        //     console.log(dataURL);
+        //     console.log("I REALY WANN MAKE WOK");
+            
+        //     this.props.changeProfile(name, dataURL)
+        // }).catch(function (err) {
+        //     // error 
+        // });
         
 
         this.props.changeProfile(name, target.files[0])
