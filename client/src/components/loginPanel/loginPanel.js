@@ -5,7 +5,7 @@ const LoginPanel = (props) =>{
     return(
         <div id="login-panel">
             <div id="wrapper">
-                <form action="" method="get">
+                <form action="" method="">
                     <div id="input-fields-box">
                         <input onChange={props.handleInputChange} type="email" name="email" placeholder="email" className="input-field" />
                         <input onChange={props.handleInputChange} type="password" name="password" placeholder="password" className="input-field" />

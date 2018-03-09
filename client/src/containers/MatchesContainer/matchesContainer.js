@@ -33,11 +33,11 @@ class MatchesPage extends React.Component {
 		render() {
 				return (
 						<div>
-								<Topbar gender={this.props.searchParams.gender}/>
-									<h1 id="header">We Think You'll get along great!</h1>
+								{/* <Topbar gender={this.props.searchParams.gender}/> */}
+									<h1 id="header">We Think You'll Get Along Great!</h1>
 
 							<div id="matches-wrapper">
-								{/* {this.props.matches.matches.map(i => 
+								{this.props.matches.matches.map(i => 
                                     <Miniprofile key={i.id}
                                                 firstname={i.firstName}
                                                 bio={i.aboutMe}
@@ -45,20 +45,8 @@ class MatchesPage extends React.Component {
                                                 rent={i.rent}
                                                 pets={i.pets}
                                                 smokes={i.smokes}
-                                />)} */}
-                            <Miniprofile />
-                            <Miniprofile />
-                                <Miniprofile />
-                            <Miniprofile />
-                            <Miniprofile />
-                            <Miniprofile />
-                            <Miniprofile />
-                            <Miniprofile />
-                            <Miniprofile />
-                            <Miniprofile />
-                            <Miniprofile />
-                            <Miniprofile />
-
+                                />)}
+                     
                             </div>
 
 
@@ -70,7 +58,6 @@ class MatchesPage extends React.Component {
                             image={`/assets/Images/${i.image}`}
                             newgame={this.state.newgame}
                         />)} */}
-
 
 
 

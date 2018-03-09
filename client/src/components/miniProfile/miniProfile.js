@@ -59,7 +59,7 @@ class Miniprofile extends React.Component{
                 </div>
 
                 <div className="avatar-bottom">
-                    <h4>{this.props.firstname}</h4>
+                    <h1>{this.props.firstname}</h1>
                 </div>
             </div>
             <div className="wrapper">

@@ -10,6 +10,8 @@
     align-items: center;
     /* flex-direction: column; */
     box-shadow:10px 10px 10px rgb(110, 110, 110);
+            margin-top: 20vh;
+
 }
 
 #wrapper{

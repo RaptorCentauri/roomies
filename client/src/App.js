@@ -82,8 +82,11 @@ class App extends React.Component{
                 if (res.success) {
                     this.props.changeUserIsLoggedIn(res.id, res.success)
                     this.props.changeAccountWasCompletedId(res.id)
+                    API.getMatches(this.props.userIsLoggedIn).then((data) => this.props.changeMatches(data))
+
 
                     //THESE ARE TEMPORARY! replace with DB call to get propper Data
+
                     this.props.changeAccountWasCompletedProfile(true);
                     this.props.changeAccountWasCompletedSearchParams(true);
                 }
@@ -137,14 +140,13 @@ class App extends React.Component{
         API.updateUserSearchParams(searchParamsToUpdate)
             .then((res) => {
                 if (res) {
-                    API.getMatches(searchParamsToUpdate).then((data) => { console.log("jo jo no bo");
-                     this.props.changeMatches(data) })
+                    API.getMatches(searchParamsToUpdate).then((data) => this.props.changeMatches(data))
                     // this.props.changeAccountWasCompletedSearchParams(true);
                 }
             });
     }
 
-    handyleLoginInputChange = (e) => {
+    handleLoginInputChange = (e) => {
         const target = e.target;
         const value = target.value;
         const name = target.name;
@@ -157,10 +159,6 @@ class App extends React.Component{
         // const value = target.files[0];
         const name = target.name;
 
-        console.log("LOOK FOR THIS!!!  " + name);
-        
-        console.log(target.files[0]);
-        console.log(typeof(target.files[0]));
 
         // blobUtil.blobToDataURL(target.files[0]).then(function (dataURL) {
         //     console.log("I want to see this");
@@ -308,8 +306,8 @@ class App extends React.Component{
     render(){
         return(
             <div>
-                <MatchesPage />
-                {/* {this.componentToRender(this.props.userIsLoggedIn.success, this.props.accountWasCompleted, this.props.matches.matches)} */}
+                {/* <CreateProfilePanel /> */}
+                {this.componentToRender(this.props.userIsLoggedIn.success, this.props.accountWasCompleted, this.props.matches.matches)}
             </div>
         )
     }

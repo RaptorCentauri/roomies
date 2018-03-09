@@ -2,10 +2,13 @@
     background-color: #eeeeee;
     width: 500px;
     height: 600px;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center; */
+    /* align-items: center; */
+    margin-top: 20vh;
+    padding-top: 0; 
 }
 
 .field-wrapper{
@@ -35,6 +38,7 @@
 #create-profile-button-row{
     display: flex;
     justify-content: flex-end;
+    padding-right: 50px; 
 }
 
 #create-profile-button{
@@ -43,12 +47,15 @@
     border: 1px solid #cccccc;
     border: none;
     font-size: 1.15em;
-    color: #cccccc;
+        color:rgb(201, 0, 67);
+
+    /* color: #cccccc; */
 }
 
 #create-profile-select{
      border: none;
     border-radius: 0;
+
     color: rgb(76, 76, 76);
     font-weight: 500;
     appearance: none;
@@ -62,10 +69,32 @@
     display: none;
 }
 
+#profile-select-bounder{
+    display: flex;
+    flex-direction: column;
+    padding-left: 50px;
+    /* align-items: center; */
+    justify-content: space-around;
+    /* background: blue; */
+    height: 100px;
+}
+#profile-avatar-upload{
+    background-color: rgb(201, 0, 67);
+    height: 175px;
+    width: 500px;
+    margin: 0;
+    padding: 0;
+    /* width: 100%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-
-#avatar-upload-label{
-    /* width: 20px; */
-    /* height: 20px; */
-    /* background-color: red; */
+#input-fields-bounder{
+    height: 250px;
+    /* padding-top: 20px; */
+    /* background: chocolate; */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
