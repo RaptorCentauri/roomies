@@ -12,6 +12,7 @@ import { connect } from "react-redux";
 import { changeAccountWasCompletedSearchParams, changeCredentials, changeProfile, changeProfileErrors, changeNewAccount, changeNewAccountErrors, changeProfileWasCompleted, changeSearchParams, changeUserIsLoggedIn, changeAccountWasCompletedId, changeAccountWasCompletedStatus, changeAccountWasCompletedProfile } from "./actions/index.js"
 
 import './App.css';
+import { read } from 'fs';
 
 let mapStateToProps = (state) => {
     return {
@@ -36,6 +37,21 @@ let matchDispatchtoProps = (dispatch) => {
 
 
 class App extends React.Component{
+
+    showPreviewImage = (pic) =>{
+        let reader = new FileReader();
+
+        let preview = document.querySelector('img');
+        let file = pic;
+
+        reader.addEventListener("load", function () {
+            preview.src = reader.result;
+        }, false);
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    }
 
     handleGetProfileClick = (e) => {
         e.preventDefault();
@@ -143,6 +159,8 @@ class App extends React.Component{
         
 
         this.props.changeProfile(name, value)
+
+        this.showPreviewImage(target.files[0])
     } 
 
     handleSignUpInputChange = (e) => {
