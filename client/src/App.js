@@ -152,15 +152,17 @@ class App extends React.Component{
 
     handleUploadImage = (e) => {
         const target = e.target;
-        const value = target.files[0];
+        // const value = target.files[0];
         const name = target.name;
 
-        // console.log("LOOK FOR THIS!!!  " + name);
+        console.log("LOOK FOR THIS!!!  " + name);
         
         console.log(target.files[0]);
+        console.log(typeof(target.files[0]));
+
         
 
-        this.props.changeProfile(name, value)
+        this.props.changeProfile(name, target.files[0])
 
         this.showPreviewImage(target.files[0])
     } 

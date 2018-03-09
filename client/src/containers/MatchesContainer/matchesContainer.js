@@ -40,6 +40,7 @@ class MatchesPage extends React.Component {
 								{this.props.matches.matches.map(i => 
                                     <Miniprofile key={i.id}
                                                 firstname={i.firstName}
+                                                avatar={i.avatar}
                                                 rent={i.rent}
                                                 pets={i.pets}
                                                 smokes={i.smokes}
