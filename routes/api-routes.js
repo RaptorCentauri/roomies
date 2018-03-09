@@ -25,23 +25,11 @@ module.exports = (app)=>{
     })
 
     app.post("/api/getprofile", function (req, res) {
-        console.log("#############################");
-        console.log("#############################");
-        console.log(req.body);
-        // console.log(req.body.ProfileId);
-        // console.log(req.body.ProfileId.id);
-        console.log(req.body.id);
-        
-
-
-        // let temp = JSON.parse(req.query.ProfileId)
-        // console.log(temp);
-        console.log("#############################");
-        console.log("#############################");
-
-        
         getUserProfile(req.body.id).then((val) =>res.json(val));
     })
+
+
+
 
     //ROUTE FOR SAVING SEARCH PARAMETERS
     app.post("/api/searchparams", function (req, res) {
@@ -50,15 +38,11 @@ module.exports = (app)=>{
 
 
     //ROUTE FOR GETING MATCHES
-    app.get("/api/matches", function (req, res) {
-        //WE SHOULD HAVE A FUNCTION THAT DETERMINES WHAT SEARCH PARAMATERS ARE SENT TO DB BASED ON THE OBJECT RECIEVED 
-
-        console.log("request made to /api/matches");
-
-        temp = JSON.parse(req.query.matchData);
-        console.log(temp);
-        db.profile.findAll({}).then((dbMatches) => res.json(dbMatches));
+    app.post("/api/matches", function (req, res) {
+        getUserMatches(req.body.id).then((val)=>res,json(val))
     })
+
+
 
 
 //FINDING A CURRENT USER? RR
