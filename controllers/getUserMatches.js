@@ -33,7 +33,6 @@ searchToMake = (searchGender) =>{
             break;
     }
 
-
     switch (searchPets) {
         case "none":
             SearchParams.sPet = ['none']
@@ -55,6 +54,20 @@ searchToMake = (searchGender) =>{
         default:
             break;
     }
+
+    switch (searchSmoke) {
+        case true:
+            SearchParams.gSmoke = [true, false]
+            break;
+        case false:
+            SearchParams.sSmoke = [false]
+            break;
+
+        default:
+            break;
+    }
+
+
 
     return SearchParams
 }
