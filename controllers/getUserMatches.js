@@ -82,7 +82,7 @@ getUserMatches = (id) => {
                 gender: {[db.Sequelize.Op.or]: sUser.sGen},
                 pets: {[db.Sequelize.Op.or]: sUser.sPet},
                 smokes: {[db.Sequelize.Op.or]: sUser.sSmoke},
-                rent: { [db.Sequelize.Op.lte]: sUser.sRent }
+                rent: { [db.Sequelize.Op.gte]: sUser.sRent }
             }
         }).then((matches) => {
             if (!matches) {
